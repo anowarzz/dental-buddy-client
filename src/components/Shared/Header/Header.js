@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import userEvent from "@testing-library/user-event";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../../../assets/dental-logo.jpg'
-
+import logo from "../../../assets/dental-logo.jpg";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -12,8 +15,7 @@ const Header = () => {
         <div className="relative flex items-center justify-between">
           <Link
             to="/"
-            aria-label="Company"
-            title="Company"
+            title="Providing Best Dental Service"
             className="inline-flex items-center"
           >
             <img src={logo} alt="" className="h-16 md:h-20 " />
@@ -25,8 +27,6 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                aria-label="Our product"
-                title="Our product"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
               >
                 Home
@@ -35,8 +35,6 @@ const Header = () => {
             <li>
               <Link
                 to="/services"
-                aria-label="Our product"
-                title="Our product"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
               >
                 Services
@@ -45,42 +43,62 @@ const Header = () => {
             <li>
               <Link
                 to="/blog"
-                aria-label="Product pricing"
-                title="Product pricing"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
               >
                 Blog
               </Link>
             </li>
-            
 
-            <li>
-              <Link
-                to="/login"
-                className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Login
-              </Link>
-            </li>
+            {user?.email ? (
+              <>
+                {user?.photoURL ? (
+                  <img
+                    alt=""
+                    style={{ height: "50px", width: "50px" }}
+                    className="rounded-full mb-4 md:mb-0"
+                    src={user?.photoURL}
+                  />
+                ) : (
+                  <li>
+                    <Link
+                      className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-Red hover:bg-[#ac2121] focus:shadow-outline focus:outline-none"
+                      aria-label="Log Out"
+                      title="Log Out"
+                    >
+                      Log Out
+                    </Link>
+                  </li>
+                )}
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Login"
+                    title="Login"
+                  >
+                    Login
+                  </Link>
+                </li>
 
-            <li>
-              <Link
-                to="/register"
-                className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Register
-              </Link>
-            </li>
+                <li>
+                  <Link
+                    to="/register"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Register"
+                    title="Register"
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
 
-          <div className="lg:hidden z-20" onChange={() => setIsMenuOpen(false)}>
+          <div className="lg:hidden z-20">
             <button
-              aria-label="Open Menu"
-              title="Open Menu"
               className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
               onClick={() => setIsMenuOpen(true)}
             >
@@ -106,8 +124,6 @@ const Header = () => {
                     <div>
                       <Link
                         to="/"
-                        aria-label="Company"
-                        title="Company"
                         className="inline-flex items-center"
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -139,8 +155,6 @@ const Header = () => {
                         <Link
                           to="/"
                           onClick={() => setIsMenuOpen(false)}
-                          aria-label="Our product"
-                          title="Our product"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           Home
@@ -150,8 +164,6 @@ const Header = () => {
                         <Link
                           to="/services"
                           onClick={() => setIsMenuOpen(false)}
-                          aria-label="Our product"
-                          title="Our product"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           Services
@@ -161,21 +173,19 @@ const Header = () => {
                         <Link
                           to="/blog"
                           onClick={() => setIsMenuOpen(false)}
-                          aria-label="Product pricing"
-                          title="Product pricing"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
                           Blog
                         </Link>
                       </li>
-                     
+
                       <li>
                         <Link
                           to="/login"
                           onClick={() => setIsMenuOpen(false)}
                           className="inline-flex items-center justify-center  h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
+                          aria-label="Login"
+                          title="Login"
                         >
                           Login
                         </Link>
@@ -186,8 +196,8 @@ const Header = () => {
                           to="/register"
                           onClick={() => setIsMenuOpen(false)}
                           className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
+                          aria-label="Register"
+                          title="Register"
                         >
                           Register
                         </Link>

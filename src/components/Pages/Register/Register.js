@@ -1,10 +1,53 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
 import register from '../../../assets/register-animation.json'
 import google from '../../../assets/google.svg'
+import { AuthContext } from '../../../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+
+const {createNewUser} = useContext(AuthContext);
+const [error, setError] = useState('');
+
+
+const handleCreateUser = (event) => {
+  event.preventDefault();
+
+  const form = event.target;
+  const name = form.name.value;
+  const email = form.email.value;
+  console.log(email);
+  // const PhotoURL = form.PhotoURL.value;
+  const password = form.password.value;
+  const confirm = form.confirm.value;
+
+
+
+  console.log('clicked');
+  
+
+if(confirm !== password){
+  setError("Your Password Did Not Match")
+  toast.error("Password Should Be Same")  
+}
+
+
+
+createNewUser(email, password)
+.then(result => {
+  const user = result.user;
+  console.log(user)
+
+})
+
+
+
+}
+
+
+
     return (
         <div>
            <div className="hero w-full my-20">
@@ -14,10 +57,10 @@ const Register = () => {
         </div>
         <div className="card rounded py-10 lg:w-9/12 border border-gray-200 shadow-md">
           <h1 className="text-3xl md:text-5xl text-center font-bold">Register</h1>
-          <form  className="card-body pb-4">
 
 
-            <div className="form-control">
+          <form onSubmit={handleCreateUser} className="card-body pb-4">
+             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Name</span>
               </label>
@@ -25,6 +68,7 @@ const Register = () => {
                 type="text"
                 placeholder="Enter Your Name"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -32,9 +76,19 @@ const Register = () => {
                 <span className="label-text font-bold">Email</span>
               </label>
               <input name='email' 
-                type="text"
+                type="email"
                 placeholder="Enter Your Email"
                 className="input input-bordered" required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-bold">PhotoURL</span>
+              </label>
+              <input name='photoURL' 
+                type="text"
+                placeholder="Enter Your PhotoURL"
+                className="input input-bordered"
               />
             </div>
 
@@ -61,10 +115,10 @@ const Register = () => {
                 className="input input-bordered" required
               />
             </div>
-            {/* { 
+            { 
               error &&
               <p className="text-brightRed font-bold text-center mb-3">{error}</p>
-            } */}
+            }
             <div className="form-control mt-6">
               <button className="btn bg-purple-700 border-none"
                 type="submit"
