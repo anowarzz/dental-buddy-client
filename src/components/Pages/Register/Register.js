@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
-import register from '../../assets/register-animation.json'
-import google from '../../assets/google.svg'
+import register from '../../../assets/register-animation.json'
+import google from '../../../assets/google.svg'
 
 const Register = () => {
     return (
