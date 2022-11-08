@@ -57,17 +57,17 @@ const Header = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/blog"
               aria-label="Product pricing"
               title="Product pricing"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
             >
-             NavItem
+           Blog
             </Link>
           </li>
           <li>
             <Link
-              to="/"
+              to="/about"
               aria-label="About us"
               title="About us"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
@@ -79,7 +79,7 @@ const Header = () => {
           <li>
             <Link
               to="/login"
-              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
               aria-label="Sign up"
               title="Sign up"
             >
@@ -90,7 +90,7 @@ const Header = () => {
           <li>
             <Link
               to="/register"
-              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
               aria-label="Sign up"
               title="Sign up"
             >
@@ -220,7 +220,7 @@ const Header = () => {
                       <Link
                         to="/login"
                         onClick={() => setIsMenuOpen(false)}
-                        className="inline-flex items-center justify-center  h-10 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                        className="inline-flex items-center justify-center  h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Sign up"
                       >
@@ -232,7 +232,7 @@ const Header = () => {
             <Link
               to="/register"
               onClick={() => setIsMenuOpen(false)}
-              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
               aria-label="Sign up"
               title="Sign up"
             >

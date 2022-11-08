@@ -53,7 +53,7 @@ const Login = () => {
                     } */}
                     <div className="form-control mt-6">
                       <input
-                        className="btn bg-blue-500 border-none"
+                        className="btn bg-purple-700 border-none"
                         type="submit"
                         value="Login"
                       />

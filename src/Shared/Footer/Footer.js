@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className='text-center'>
+        <div className='text-center max-w-screen-2xl'>
            <footer className="footer p-10 bg-slate-300">
   <div>
     <h4 className='text-3xl'>Site Name Or Logo Here</h4>
