@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/dental-logo.jpg'
+import logo2 from '../../assets/dental.jpg'
 const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,8 +17,8 @@ const Header = () => {
           className="inline-flex items-center"
         >
          
-          <img src={logo} alt="" className='h-16 md:h-20'/>
-          <h2 className="text-2xl font-bold tracking-wide text-emerald-500 uppercase">
+          <img src={logo} alt="" className='h-16 md:h-20 '/>
+          <h2 className="ml-2 text-black font-bold tracking-wide text-2xl uppercase">
             DENTAL BUDDY
             </h2>
         </Link>
