@@ -13,7 +13,7 @@ const Register = () => {
           <Lottie animationData={register} loop={true}/>
         </div>
         <div className="card rounded py-10 lg:w-9/12 border border-gray-200 shadow-md">
-          <h1 className="text-3xl md:text-5xl text-center font-bold">Sign Up</h1>
+          <h1 className="text-3xl md:text-5xl text-center font-bold">Register</h1>
           <form  className="card-body pb-4">
 
 

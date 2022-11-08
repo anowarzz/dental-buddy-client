@@ -1,5 +1,5 @@
 {
-  "name": "assignment-11-client",
+  "name": "dental-buddy-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "daisyui": "^2.38.1",
+    "firebase": "^9.13.0",
     "lottie-react": "^2.3.1",
     "lottie-web": "^5.9.6",
     "react": "^18.2.0",
