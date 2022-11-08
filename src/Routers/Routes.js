@@ -5,11 +5,13 @@ import Login from '../components/Pages/Login/Login'
 import Blog from '../components/Pages/Blog/Blog'
 import Register from '../components/Pages/Register/Register'
 import Services from '../components/Pages/Services/Services'
+import ErrorPage from '../components/ErrorPage/ErrorPage'
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -35,32 +37,3 @@ export const router = createBrowserRouter([
         ]
     }
 ])
-
-
-
-
- 
-        
-        // // {
-        // //     path:'/login',
-        // //     element: <Login />
-        // // },
-        // {
-        //     path:'/register',
-        //     element: <Register />
-        // },
-        // {
-        //     path:'/services',
-        //     element: <Services />
-        // },
-        // {
-        //     path:'/blog',
-        //     element: <Blog />
-        // },
-        // {
-        //     path:'/about',
-        //     element: <About />
-        // },
-
- 
-
