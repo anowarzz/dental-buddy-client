@@ -6,13 +6,13 @@ import login from '../../assets/login-animation.json'
 const Login = () => {
         return (
             <div className="hero w-full my-20">
-              <div className="mx-auto hero-content grid md:grid-cols-2 gap-20 flex-col lg:flex-row items-center justify-center">
+              <div className="mx-auto hero-content grid md:grid-cols-2 gap-2 flex-col lg:flex-row items-center justify-center">
                 <div className="text-center lg:text-left">
                
                <Lottie animationData={login} loop={true}/>
                
                 </div>
-                <div className="card pt-10 pb-20  border border-gray-200 shadow-md w-9/12">
+                <div className="card pt-10 pb-20  border border-gray-200 shadow-md lg:w-3/4">
                   <h1 className="text-3xl md:text-5xl text-center font-bold">Login</h1>
                   <form  className="card-body">
                     <div className="form-control">

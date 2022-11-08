@@ -7,7 +7,7 @@ const Register = () => {
     return (
         <div>
            <div className="hero w-full my-20">
-      <div className="hero-content grid md:grid-cols-2 gap-20 flex-col lg:flex-row items-center justify-center">
+      <div className="hero-content grid md:grid-cols-2 gap-2 flex-col lg:flex-row items-center justify-center">
         <div className="text-center lg:text-left">
           <Lottie animationData={register} loop={true}/>
         </div>

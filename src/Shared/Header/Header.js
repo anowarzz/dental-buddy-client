@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
         <div>
-           <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+           <div className="z-20 px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
         <Link
           to="/"
@@ -39,17 +40,17 @@ const Header = () => {
               to="/"
               aria-label="Our product"
               title="Our product"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
             >
               Home
             </Link>
           </li>
           <li>
             <Link
-              to="/"
+              to="/services"
               aria-label="Our product"
               title="Our product"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
             >
               Services
             </Link>
@@ -59,7 +60,7 @@ const Header = () => {
               to="/"
               aria-label="Product pricing"
               title="Product pricing"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
             >
              NavItem
             </Link>
@@ -69,7 +70,7 @@ const Header = () => {
               to="/"
               aria-label="About us"
               title="About us"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
             >
               About us
             </Link>
@@ -78,7 +79,7 @@ const Header = () => {
           <li>
             <Link
               to="/login"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
               aria-label="Sign up"
               title="Sign up"
             >
@@ -89,7 +90,7 @@ const Header = () => {
           <li>
             <Link
               to="/register"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
               aria-label="Sign up"
               title="Sign up"
             >
@@ -99,7 +100,7 @@ const Header = () => {
 
         </ul>
 
-        <div className="lg:hidden">
+        <div className="lg:hidden z-20" onChange={() => setIsMenuOpen(false)}>
           <button
             aria-label="Open Menu"
             title="Open Menu"
@@ -131,6 +132,7 @@ const Header = () => {
                       aria-label="Company"
                       title="Company"
                       className="inline-flex items-center"
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       <svg
                         className="w-8 text-deep-purple-accent-400"
@@ -173,6 +175,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -182,7 +185,8 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/services"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -192,17 +196,19 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/blog"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="Product pricing"
                         title="Product pricing"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        Pricing
+                        Blog
                       </Link>
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/about"
+                        onClick={() => setIsMenuOpen(false)}
                         aria-label="About us"
                         title="About us"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple--400"
@@ -212,14 +218,27 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                        to="/login"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="inline-flex items-center justify-center  h-10 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Sign up"
                       >
                         Login
                       </Link>
                     </li>
+
+                    <li>
+            <Link
+              to="/register"
+              onClick={() => setIsMenuOpen(false)}
+              className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+              aria-label="Sign up"
+              title="Sign up"
+            >
+              Register
+            </Link>
+          </li>
                   </ul>
                 </nav>
               </div>
