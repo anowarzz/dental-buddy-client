@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
 import login from '../../assets/login-animation.json'
+import google from '../../assets/google.svg'
 
 const Login = () => {
         return (
@@ -12,9 +13,9 @@ const Login = () => {
                <Lottie animationData={login} loop={true}/>
                
                 </div>
-                <div className="card pt-10 pb-20  border border-gray-200 shadow-md lg:w-3/4">
+                <div className="card py-10  rounded border border-gray-200 shadow-md lg:w-3/4">
                   <h1 className="text-3xl md:text-5xl text-center font-bold">Login</h1>
-                  <form  className="card-body">
+                  <form  className="card-body pb-4">
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text font-bold">Email</span>
@@ -52,16 +53,24 @@ const Login = () => {
                       <p className="text-brightRed font-bold text-center mb-3">{error}</p>
                     } */}
                     <div className="form-control mt-6">
-                      <input
-                        className="btn bg-purple-700 border-none"
+                      <button className="btn bg-purple-700 border-none"
                         type="submit"
-                        value="Login"
-                      />
+                        value="Login">
+                            Login
+                      </button>
+                   
                     </div>
                   </form>
-                  
-                  <p className="text-center">New Here? <Link to='/register' className="text-brightRed font-bold hover:link pl-3">
+                  <div className='flex flex-col gap-2 justify-center items-center'>
+                   <p className='font-semibold'>Or Continue With Google</p>
+                    <Link>
+                    <img className='h-12 w-12 bg-gray-300 rounded-full' src={google} alt="" />
+                    </Link>
+                    <p className="text-center mt-4 ">New Here? <Link to='/register' className="text-brightRed font-bold hover:link pl-3">
                  Sign Up </Link> </p>
+
+                  </div>
+                  
                 </div>
               </div>
             </div>
