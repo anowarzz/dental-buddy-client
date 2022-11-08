@@ -52,7 +52,7 @@ useEffect(() => {
 
 
 const authInfo = {user, setUser, loading, setLoading, createNewUser, googleLogIn,
-logIn}
+logIn, logOut}
 
     return (
         <AuthContext.Provider value={authInfo}>

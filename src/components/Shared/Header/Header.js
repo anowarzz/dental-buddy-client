@@ -1,13 +1,19 @@
-import userEvent from "@testing-library/user-event";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dental-logo.jpg";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+const logOutHandler = () => {
+  logOut()
+  .then(() => {})
+  .catch((err) => console.error(err))
+};
+
 
   return (
     <div>
@@ -65,7 +71,10 @@ const Header = () => {
                       aria-label="Log Out"
                       title="Log Out"
                     >
+                      <button onClick={logOutHandler}>
                       Log Out
+                      </button>
+                      
                     </Link>
                   </li>
                 )}
