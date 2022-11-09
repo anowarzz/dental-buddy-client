@@ -1,3 +1,5 @@
+import { faTooth } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import banner from '../../../assets/dental-banner.jpg'
@@ -50,8 +52,13 @@ useEffect( () => {
 
      <div className='text-center mb-20'>
      <Link to='/services'>
-     <button className="btn btn-primary relative px-8 py-4 ml-4 overflow-hidden font-semibold rounded bg-gray-800 text-gray-50">View All Services
-	<span className="absolute top-0 right-0 px-5 py-1 text-xs tracking-wider text-center uppercase whitespace-no-wrap origin-bottom-left transform rotate-45 -translate-y-full translate-x-1/3 bg-Red"></span>
+     <button className="btn hover:bg-primary  relative px-8 py-4 ml-4 overflow-hidden font-semibold rounded bg-gray-800 ">
+
+     <FontAwesomeIcon icon={faTooth}/>
+      <p className='px-2'>
+      View All Services
+      </p>
+      <FontAwesomeIcon icon={faTooth}/>
 </button>
 </Link>
       </div>
