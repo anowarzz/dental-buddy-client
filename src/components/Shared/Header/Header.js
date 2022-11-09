@@ -30,8 +30,8 @@ const logOutHandler = () => {
             className="inline-flex items-center"
           >
             <img src={logo} alt="" className="h-16 md:h-20 " />
-            <h2 className="ml-2 text-black font-bold tracking-wide text-2xl uppercase">
-              DENTAL BUDDY
+            <h2 className="ml-2 text-black font-bold tracking-wide text-2xl uppercase font-Merry">
+              <span className="">DENTAL</span> BUDDY
             </h2>
           </Link>
           <ul className="items-center hidden space-x-8 lg:flex">

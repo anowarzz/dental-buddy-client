@@ -9,6 +9,8 @@ import ErrorPage from '../components/ErrorPage/ErrorPage'
 import MyReviews from '../components/Pages/MyReviews/MyReviews'
 import AddService from '../components/Pages/AddService/AddService'
 import PrivateRoutes from './PrivateRoutes/PrivateRoutes'
+import ServiceInfo from '../components/Pages/ServiceInfo/ServiceInfo'
+
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +27,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services />,
-                loader: () => fetch('https://dental-buddy-server.vercel.app/all-services')
+                loader: () => fetch('https://dental-buddy-server.vercel.app/services')
                 
             },
             {
@@ -51,6 +53,13 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />
+            },
+            {
+                path: '/services/:id',
+                element: <ServiceInfo />,
+                loader: ({params}) => {
+                    fetch(`https://dental-buddy-server.vercel.app/services/${params.id}`)
+                }
             },
             
         ]
