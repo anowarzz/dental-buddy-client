@@ -6,6 +6,9 @@ import Blog from '../components/Pages/Blog/Blog'
 import Register from '../components/Pages/Register/Register'
 import Services from '../components/Pages/Services/Services'
 import ErrorPage from '../components/ErrorPage/ErrorPage'
+import MyReviews from '../components/Pages/MyReviews/MyReviews'
+import AddService from '../components/Pages/AddService/AddService'
+import PrivateRoutes from './PrivateRoutes/PrivateRoutes'
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +23,18 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services />
+            },
+            {
+                path: '/my-reviews',
+                element: <PrivateRoutes>
+                    <MyReviews />
+                </PrivateRoutes>
+            },
+            {
+                path: '/add-service',
+                element: <PrivateRoutes>
+                    <AddService />
+                </PrivateRoutes>
             },
             {
                 path: '/blog',

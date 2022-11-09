@@ -1,3 +1,5 @@
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dental-logo.jpg";
@@ -58,16 +60,33 @@ const logOutHandler = () => {
               </Link>
             </li>
 
-            {user?.email ? (
+            {user?.uid ? (
               <>
-                {user?.photoURL ? (
+               <li>
+              <Link
+                to="/my-reviews"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              >
+                My Reviews
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/add-service"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              >
+                Add Service
+              </Link>
+            </li>
+                { user?.photoURL ?
                   <img
                     alt=""
                     style={{ height: "50px", width: "50px" }}
                     className="rounded-full mb-4 md:mb-0"
                     src={user?.photoURL}
                   />
-                ) : (
+                :  <FontAwesomeIcon className="text-lg" icon={faUser} />
+                }
                   <li>
                     <Link
                       className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-Red hover:bg-[#ac2121] focus:shadow-outline focus:outline-none"
@@ -80,7 +99,7 @@ const logOutHandler = () => {
                       
                     </Link>
                   </li>
-                )}
+                
               </>
             ) : (
               <>
