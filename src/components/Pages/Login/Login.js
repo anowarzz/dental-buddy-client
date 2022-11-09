@@ -119,17 +119,18 @@ const handleGoogleLogin = () => {
               <img
                 className="h-12 w-12 bg-gray-300 rounded-full"
                 src={google}
-                alt=""
+                alt="google logo"
+                title="Sign In With Google"
               />
             </Link>
             <p className="text-center mt-4 ">
-              New Here?{" "}
+              New To Dental Buddy ?
               <Link
                 to="/register"
                 className="text-brightRed font-bold hover:link pl-3"
               >
-                Sign Up{" "}
-              </Link>{" "}
+                Register
+              </Link>
             </p>
           </div>
         </div>

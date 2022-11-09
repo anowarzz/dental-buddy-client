@@ -5,10 +5,13 @@ import register from "../../../assets/register-animation.json";
 import google from "../../../assets/google.svg";
 import { AuthContext } from "../../../context/AuthProvider";
 import toast from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
   // context and states
-  const { createNewUser, updateUserProfile } = useContext(AuthContext);
+  const { createNewUser, updateUserProfile, googleLogIn, setUser, user } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   // location
@@ -60,6 +63,25 @@ const Register = () => {
         .catch((e) => console.error(e));
     };
   };
+
+
+// Register With google 
+const handleGoogleRegister = () => {
+  googleLogIn(googleProvider)
+
+  .then(result => {
+    const user = result.user;
+    setUser(user);
+    toast.success('Login Successful')
+    navigate(from, {replace:true})
+  })
+  .catch(err => {
+    console.error(err)
+    setError(err.message)
+  })
+}
+
+
 
   return (
     <div>
@@ -146,11 +168,12 @@ const Register = () => {
             </form>
             <div className="flex flex-col gap-2 justify-center items-center">
               <p className="font-semibold">Or Continue With Google</p>
-              <Link>
+              <Link onClick={handleGoogleRegister}>
                 <img
                   className="h-12 w-12 bg-gray-300 rounded-full"
                   src={google}
                   alt=""
+                  title="Register With Google"
                 />
               </Link>
               <p className="text-center mt-4 ">
