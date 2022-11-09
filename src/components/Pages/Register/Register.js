@@ -161,7 +161,7 @@ const handleGoogleRegister = () => {
                 <p className="text-Red font-bold text-center mb-3">{error}</p>
               )}
               <div className="form-control mt-6">
-                <button className="btn btn-primary border-none" type="submit">
+                <button className="btn btn-info hover:btn-primary border-none" type="submit">
                   Register
                 </button>
               </div>

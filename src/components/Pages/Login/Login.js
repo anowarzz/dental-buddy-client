@@ -108,7 +108,7 @@ const handleGoogleLogin = () => {
               <p className="text-Red font-bold text-center mb-3">{error}</p>
             )}
             <div className="form-control mt-6">
-              <button className="btn btn-primary border-none" type="submit">
+              <button className="btn btn-info hover:btn-primary border-none" type="submit">
                 Login
               </button>
             </div>
@@ -127,7 +127,7 @@ const handleGoogleLogin = () => {
               New To Dental Buddy ?
               <Link
                 to="/register"
-                className="text-brightRed font-bold hover:link pl-3"
+                className="font-bold hover:link pl-3"
               >
                 Register
               </Link>

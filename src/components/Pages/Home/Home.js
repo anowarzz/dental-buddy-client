@@ -30,8 +30,12 @@ useEffect( () => {
           </div>
         </div>
       </div>
-      <div className='text-center mb-14'>
-           
+      <div className='text-center mb-14 relative'>
+           <div className='flex flex-col lg:flex-row gap-2 justify-center items-center'>
+           <p className='text-sm bg-secondary text-white inline p-1 rounded-xl font-serif'>I care For Your Smile</p>
+           <p className='text-sm bg-secondary text-white inline p-1 rounded-xl font-serif'>Committed To Excellence</p>
+           <p className='text-sm bg-secondary text-white inline p-1 rounded-xl font-serif'>Creating Brighter Smiles</p>
+           </div>
            <h2 className='text-5xl font-semibold mt-5' >My Services</h2>
            <p className='p-6'>
            The majority have suffered alteration in some form, by injected humour <br /> or randomised words which don't look even slightly believable. 
