@@ -9,7 +9,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-console.log(user?.photoURL);
+
 
 
 
@@ -84,8 +84,9 @@ const logOutHandler = () => {
                     style={{ height: "50px", width: "50px" }}
                     className="rounded-full mb-4 md:mb-0"
                     src={user?.photoURL}
+                    title={user?.displayName}
                   />
-                  </> : <FontAwesomeIcon className="text-lg" icon={faUser} />
+                  </> : <FontAwesomeIcon className="text-lg" icon={faUser} title={user?.displayName}/>
                 }
                   <li>
                     <Link onClick={logOutHandler}

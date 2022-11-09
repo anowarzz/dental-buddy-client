@@ -11,7 +11,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
   // context and states
-  const { createNewUser, updateUserProfile, googleLogIn, setUser, user } = useContext(AuthContext);
+  const { createNewUser, updateUserProfile, googleLogIn, setUser} = useContext(AuthContext);
   const [error, setError] = useState("");
 
   // location
@@ -29,7 +29,7 @@ const Register = () => {
     const password = form.password.value;
     const confirm = form.confirm.value;
 
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       setError("Please Provide a Valid Email");
     }
 
