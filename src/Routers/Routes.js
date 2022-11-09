@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services />,
-                loader: () => fetch('http://localhost:5000/all-services')
+                loader: () => fetch('https://dental-buddy-server.vercel.app/all-services')
                 
             },
             {

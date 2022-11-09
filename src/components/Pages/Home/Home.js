@@ -9,7 +9,7 @@ const Home = () => {
 const [services, setServices] = useState([]);
 
 useEffect( () => {
-  fetch('http://localhost:5000/top-services')
+  fetch('https://dental-buddy-server.vercel.app/top-services')
   .then(res => res.json())
   .then(data => setServices(data))
 }, [])

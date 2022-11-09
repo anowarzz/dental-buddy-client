@@ -67,7 +67,7 @@ const handleGoogleLogin = () => {
 
   return (
     <div className="hero w-full my-20">
-      <div className="mx-auto hero-content grid md:grid-cols-2 gap-2 flex-col lg:flex-row items-center justify-center">
+      <div className="mx-auto hero-content grid md:grid-cols-2 flex-col lg:flex-row items-center justify-center">
         <div className="text-center lg:text-left">
           <Lottie animationData={login} loop={true} />
         </div>
