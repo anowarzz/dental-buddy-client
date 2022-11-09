@@ -37,8 +37,8 @@ useEffect( () => {
            <p className='text-sm bg-secondary text-white inline p-1 rounded-xl font-serif'>Creating Brighter Smiles</p>
            </div>
            <h2 className='text-5xl font-semibold mt-5 font-Merry' >My Services</h2>
-           <p className='p-6'>
-           The majority have suffered alteration in some form, by injected humour <br /> or randomised words which don't look even slightly believable. 
+           <p className='p-6 text-lg'>
+           Adults and kids, I welcome patients of all ages! <br className='hidden md:block'/> I am passionate about building lifetime relationships <br className='hidden md:block'/> through positive experience.
         </p>
            </div>
 
