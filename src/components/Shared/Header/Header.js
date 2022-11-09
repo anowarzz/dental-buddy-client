@@ -9,7 +9,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+console.log(user?.photoURL);
 
 
 
@@ -78,25 +78,22 @@ const logOutHandler = () => {
                 Add Service
               </Link>
             </li>
-                { user?.photoURL ?
+                { user?.photoURL ? <>
                   <img
                     alt=""
                     style={{ height: "50px", width: "50px" }}
                     className="rounded-full mb-4 md:mb-0"
                     src={user?.photoURL}
                   />
-                :  <FontAwesomeIcon className="text-lg" icon={faUser} />
+                  </> : <FontAwesomeIcon className="text-lg" icon={faUser} />
                 }
                   <li>
-                    <Link
+                    <Link onClick={logOutHandler}
                       className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-Red hover:bg-[#ac2121] focus:shadow-outline focus:outline-none"
                       aria-label="Log Out"
                       title="Log Out"
                     >
-                      <button onClick={logOutHandler}>
-                      Log Out
-                      </button>
-                      
+                    Log Out
                     </Link>
                   </li>
                 
@@ -182,57 +179,108 @@ const logOutHandler = () => {
                   </div>
                   <nav>
                     <ul className="space-y-4">
-                      <li>
-                        <Link
-                          to="/"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Home
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/services"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Services
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/blog"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        >
-                          Blog
-                        </Link>
-                      </li>
+                    <li>
+              <Link
+                to="/"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/blog"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </Link>
+            </li>
 
-                      <li>
-                        <Link
-                          to="/login"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="inline-flex items-center justify-center  h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Login"
-                          title="Login"
-                        >
-                          Login
-                        </Link>
-                      </li>
+            {user?.uid ? (
+              <>
+               <li>
+              <Link
+                to="/my-reviews"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                My Reviews
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/add-service"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Add Service
+              </Link>
+            </li>
+                { user?.photoURL ?
+                  <img
+                    alt=""
+                    style={{ height: "50px", width: "50px" }}
+                    className="rounded-full mb-4 md:mb-0"
+                    src={user?.photoURL}
+                  />
+                :  <FontAwesomeIcon className="text-lg" icon={faUser} />
+                }
+                  <li>
+                    <Link 
+                      className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-Red hover:bg-[#ac2121] focus:shadow-outline focus:outline-none"
+                      aria-label="Log Out"
+                      title="Log Out"
+                      onClick={() => {
+                        setIsMenuOpen(false)
+                        logOutHandler()
+                      }}
+                    >
+                    
+                      Log Out
+                  
+                      
+                    </Link>
+                  </li>
+                
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Login"
+                    title="Login"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                </li>
 
-                      <li>
-                        <Link
-                          to="/register"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Register"
-                          title="Register"
-                        >
-                          Register
-                        </Link>
-                      </li>
+                <li>
+                  <Link
+                    to="/register"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Register"
+                    title="Register"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
                     </ul>
                   </nav>
                 </div>
