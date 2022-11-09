@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import register from '../../../assets/register-animation.json'
 import google from '../../../assets/google.svg'
 import { AuthContext } from '../../../context/AuthProvider';
-import { toast } from 'react-toastify';
+
 
 const Register = () => {
 
@@ -30,7 +30,7 @@ const handleCreateUser = (event) => {
 
 if(confirm !== password){
   setError("Your Password Did Not Match")
-  toast.error("Password Should Be Same")  
+  
 }
 
 
@@ -117,12 +117,12 @@ createNewUser(email, password)
             </div>
             { 
               error &&
-              <p className="text-brightRed font-bold text-center mb-3">{error}</p>
+              <p className="text-Red font-bold text-center mb-3">{error}</p>
             }
             <div className="form-control mt-6">
-              <button className="btn bg-purple-700 border-none"
+              <button className="btn btn-primary border-none"
                 type="submit"
-                value="Sign Up">
+                >
                     Register
               </button>
             </div>

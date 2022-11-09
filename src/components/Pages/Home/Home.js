@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import banner from '../../../assets/dental-banner.jpg'
-import banner2 from '../../../assets/dental.jpg'
+
 const Home = () => {
+
 
 
 

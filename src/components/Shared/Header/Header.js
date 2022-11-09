@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/dental-logo.jpg";
 import { AuthContext } from "../../../context/AuthProvider";
@@ -7,6 +7,9 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+
+
 
 const logOutHandler = () => {
   logOut()
