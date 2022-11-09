@@ -6,6 +6,10 @@ module.exports = {
       Red: '#FF3811'
     },
     extend: {},
+      fontFamily: {
+        "Merry": ["Merriweather", "serif"],
+    },
   },
   plugins: [require("daisyui")],
 }
+

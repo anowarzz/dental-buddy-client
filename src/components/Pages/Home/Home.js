@@ -20,12 +20,12 @@ useEffect( () => {
         <div>
           <div className="hero min-h-screen mb-24" style={{ backgroundImage: `url(${banner})` }}>
 
-        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-xl">
-            <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white"> Your Great <span className='text-yellow-500'>Smile</span> Begins </h1>
-            <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white">With A Great <span className='text-yellow-500'>Dentist</span></h1>
-            <p className="mb-5"> Experience the best of dentistry and perfect your smile</p>
+            <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white font-Merry"> Your Great <span className='text-secondary'>Smile</span> Begins </h1>
+            <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white font-Merry">With A Great <span className='text-secondary'>Dentist</span></h1>
+            <p className="mb-5 text-lg"> Experience the best of dentistry and perfect your smile. I am Here to ensure that you receive the best treatment that you require at a very time that suits you.</p>
             <button className="btn btn-primary">Book Appointment</button>
           </div>
         </div>
@@ -36,7 +36,7 @@ useEffect( () => {
            <p className='text-sm bg-secondary text-white inline p-1 rounded-xl font-serif'>Committed To Excellence</p>
            <p className='text-sm bg-secondary text-white inline p-1 rounded-xl font-serif'>Creating Brighter Smiles</p>
            </div>
-           <h2 className='text-5xl font-semibold mt-5' >My Services</h2>
+           <h2 className='text-5xl font-semibold mt-5 font-Merry' >My Services</h2>
            <p className='p-6'>
            The majority have suffered alteration in some form, by injected humour <br /> or randomised words which don't look even slightly believable. 
         </p>
