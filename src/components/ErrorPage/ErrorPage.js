@@ -9,7 +9,7 @@ const ErrorPage = () => {
   return (
     <section className="flex items-center h-screen p-16 text-gray-900">
       <div className="container flex flex-col items-center justify-center px-5 mx-auto mt-16">
-        <img src={Error} alt="" className="h-96"/>
+        <img src={Error} alt="" className="lg:h-96"/>
          
         <div className="max-w-md text-center mt-4">
           <h2 className="mb-2 font-semibold text-xl">
@@ -20,7 +20,7 @@ const ErrorPage = () => {
             to="/"
             className="px-8 py-3 font-semibold rounded bg-blue-900 text-white hover:bg-blue-500"
           >
-            Go Back To Home Page
+            <button>Go Back To Home Page</button>
           </Link>
         </div>
       </div>

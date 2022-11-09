@@ -4,7 +4,9 @@ import ServiceCard from './ServiceCard';
 
 const Services = () => {
 
- const allServices = useLoaderData();
+ const services = useLoaderData();
+    console.log(services);
+    
 
     return (
         <div className='mb-24'>
@@ -18,7 +20,7 @@ const Services = () => {
            </div>
        <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto'>
        {
-            allServices.map(service => <ServiceCard key={service._id} service={service}/>)
+            services.map(service => <ServiceCard key={service._id} service={service}/>)
         }
        </div>
         </div>
