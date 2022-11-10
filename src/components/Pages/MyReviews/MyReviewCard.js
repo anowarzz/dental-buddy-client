@@ -1,15 +1,17 @@
 import React from 'react';
 
 const MyReviewCard = ({review}) => {
+
+
     return (
         <div>
           
-      <div className="container flex flex-col w-full  p-6 mx-auto divide-y rounded-md divide-gray-400 bg-gray-50 text-gray-800">
+      <div className="container flex flex-col w-full  p-6 mx-auto divide-y rounded-md divide-gray-400 bg-gray-100 text-gray-800">
         <div className="flex justify-between p-4">
           <div className="flex space-x-4">
             <div>
               <img
-                src={review.reviewImg}
+                src={review.userImg}
                 alt=""
                 className="object-cover w-12 h-12 rounded-full bg-gray-500"
               />
@@ -36,12 +38,12 @@ const MyReviewCard = ({review}) => {
           {review?.reviewText}
           </p>
         </div>
-        <div className="text-center flex flex-col md:flex-row gap-4 justify-center items-center mt-8">
+       
+      </div>
+      <div className="text-center flex flex-col md:flex-row gap-4 justify-center items-center">
           <button className="btn-sm bg-info font-semibold">Edit Review</button>
           <button className="btn-sm bg-Red font-semibold">Delete Review</button>
         </div>
-      </div>
-
         </div>
     );
 };
