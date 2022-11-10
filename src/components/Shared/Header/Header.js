@@ -1,7 +1,7 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/dental-logo.jpg";
 import { AuthContext } from "../../../context/AuthProvider";
 
@@ -24,7 +24,7 @@ const logOutHandler = () => {
     <div>
       <div className="z-20 px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
-          <Link
+          <NavLink
             to="/"
             title="Providing Best Dental Service"
             className="inline-flex items-center"
@@ -33,50 +33,60 @@ const logOutHandler = () => {
             <h2 className="ml-2 text-black font-bold tracking-wide text-2xl uppercase font-Merry">
               <span className="">DENTAL</span> BUDDY
             </h2>
-          </Link>
+          </NavLink>
           <ul className="items-center hidden space-x-8 lg:flex">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/services"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
               >
                 Services
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/blog"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
               >
                 Blog
-              </Link>
+              </NavLink>
             </li>
 
             {user?.uid ? (
               <>
                <li>
-              <Link
+              <NavLink
                 to="/my-reviews"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
               >
                 My Reviews
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/add-service"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
               >
                 Add Service
-              </Link>
+              </NavLink>
             </li>
                 { user?.photoURL ? <>
                   <img
@@ -89,38 +99,38 @@ const logOutHandler = () => {
                   </> : <FontAwesomeIcon className="text-lg" icon={faUser} title={user?.displayName}/>
                 }
                   <li>
-                    <Link onClick={logOutHandler}
+                    <NavLink onClick={logOutHandler}
                       className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-Red hover:bg-[#ac2121] focus:shadow-outline focus:outline-none"
                       aria-label="Log Out"
                       title="Log Out"
                     >
                     Log Out
-                    </Link>
+                    </NavLink>
                   </li>
                 
               </>
             ) : (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="/login"
-                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none hover:bg-success"
                     aria-label="Login"
                     title="Login"
                   >
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li>
-                  <Link
+                  <NavLink
                     to="/register"
-                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none hover:bg-success"
                     aria-label="Register"
                     title="Register"
                   >
                     Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
@@ -151,7 +161,7 @@ const logOutHandler = () => {
                 <div className="p-5 bg-white border rounded shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <Link
+                      <NavLink
                         to="/"
                         className="inline-flex items-center"
                         onClick={() => setIsMenuOpen(false)}
@@ -160,7 +170,7 @@ const logOutHandler = () => {
                         <h2 className="ml-2 text-black font-bold tracking-wide text-2xl uppercase">
                           DENTAL BUDDY
                         </h2>
-                      </Link>
+                      </NavLink>
                     </div>
                     <div>
                       <button
@@ -181,52 +191,62 @@ const logOutHandler = () => {
                   <nav>
                     <ul className="space-y-4">
                     <li>
-              <Link
+              <NavLink
                 to="/"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/services"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
                 onClick={() => setIsMenuOpen(false)}
               >
                 Services
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/blog"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
-              </Link>
+              </NavLink>
             </li>
 
             {user?.uid ? (
               <>
                <li>
-              <Link
+              <NavLink
                 to="/my-reviews"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
                 onClick={() => setIsMenuOpen(false)}
               >
                 My Reviews
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/add-service"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+                className={({ isActive }) =>
+                isActive ? "font-medium tracking-wide text-success transition-colors duration-200 hover:text-emerald-500 hover:outline p-1": "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-emerald-500 hover:outline p-1"
+              }
                 onClick={() => setIsMenuOpen(false)}
               >
                 Add Service
-              </Link>
+              </NavLink>
             </li>
                 { user?.photoURL ?
                   <img
@@ -238,7 +258,7 @@ const logOutHandler = () => {
                 :  <FontAwesomeIcon className="text-lg" icon={faUser} />
                 }
                   <li>
-                    <Link 
+                    <NavLink 
                       className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-Red hover:bg-[#ac2121] focus:shadow-outline focus:outline-none"
                       aria-label="Log Out"
                       title="Log Out"
@@ -251,34 +271,34 @@ const logOutHandler = () => {
                       Log Out
                   
                       
-                    </Link>
+                    </NavLink>
                   </li>
                 
               </>
             ) : (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="/login"
-                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none hover:bg-success"
                     aria-label="Login"
                     title="Login"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li>
-                  <Link
+                  <NavLink
                     to="/register"
-                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 focus:shadow-outline focus:outline-none hover:bg-success"
                     aria-label="Register"
                     title="Register"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}
