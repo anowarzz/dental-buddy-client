@@ -34,9 +34,11 @@ const ServiceInfo = () => {
             <p className="font-semibold font-Merry bg-black rounded-xl inline w-fit text-white px-1 md:text-xl">
               Price : ${serviceInfo?.price}
             </p>
-            <p className="font-semibold font-Merry bg-black rounded-xl text-white w-fit px-1 md:text-xl inline">
-              Ratings : {serviceInfo?.ratings}
-            </p>
+           {
+            serviceInfo.ratings &&  <p className="font-semibold font-Merry bg-black rounded-xl text-white w-fit px-1 md:text-xl inline">
+            Ratings : {serviceInfo?.ratings}
+          </p>
+           }
           </div>
 
           <div className="my-12">

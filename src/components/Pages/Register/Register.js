@@ -6,12 +6,13 @@ import google from "../../../assets/google.svg";
 import { AuthContext } from "../../../context/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import { ScaleLoader } from "react-spinners";
 
 const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
   // context and states
-  const { createNewUser, updateUserProfile, googleLogIn, setUser} = useContext(AuthContext);
+  const { createNewUser, updateUserProfile, googleLogIn, setUser,loading, setLoading} = useContext(AuthContext);
   const [error, setError] = useState("");
 
   // location
@@ -21,7 +22,7 @@ const Register = () => {
 
   const handleCreateUser = (event) => {
     event.preventDefault();
-
+    setLoading(true)
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -48,6 +49,7 @@ const Register = () => {
       console.log(user);
       handleUpdateUserProfile(name, photo);
       setError("");
+      setLoading(false)
       toast.success("Registration Successful");
       navigate(from, { replace: true });
     });
@@ -86,6 +88,14 @@ const handleGoogleRegister = () => {
   return (
     <div>
       <div className="hero w-full my-20">
+      {
+  loading && <div className="z-20 absolute top-40">
+     <ScaleLoader
+  color="#36d7b7"
+  size={100}
+/>
+  </div>
+}
         <div className="hero-content grid md:grid-cols-2 gap-2 flex-col lg:flex-row items-center justify-center">
           <div className="text-center lg:text-left">
             <Lottie animationData={register} loop={true} />

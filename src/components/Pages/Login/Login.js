@@ -6,6 +6,7 @@ import google from "../../../assets/google.svg";
 import { AuthContext } from "../../../context/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import { ScaleLoader } from "react-spinners";
 
 
 
@@ -13,7 +14,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
   // Contest
-  const { user, setUser, logIn, googleLogIn} =
+  const {setUser, logIn, googleLogIn, loading, setLoading} =
     useContext(AuthContext);
 
   // Error State
@@ -26,6 +27,7 @@ const Login = () => {
 
   const handleLogIn = (event) => {
     event.preventDefault();
+    setLoading(true)
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -38,6 +40,7 @@ const Login = () => {
         console.log(user);
         setError("");
         form.reset();
+        setLoading(false)
         toast.success("Login Successful");
         navigate(from, { replace: true });
          
@@ -66,7 +69,15 @@ const handleGoogleLogin = () => {
 
 
   return (
-    <div className="hero w-full my-20">
+    <div className="hero w-full my-20 ">
+{
+  loading && <div className="z-20 absolute top-40">
+     <ScaleLoader
+  color="#36d7b7"
+  size={100}
+/>
+  </div>
+}
       <div className="mx-auto hero-content grid md:grid-cols-2 flex-col lg:flex-row items-center justify-center">
         <div className="text-center lg:text-left">
           <Lottie animationData={login} loop={true} />

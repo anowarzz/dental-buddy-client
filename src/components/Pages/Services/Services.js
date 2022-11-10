@@ -10,10 +10,11 @@ const Services = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
     
-
     return (
+      
         <div className='mb-24'>
-             <div className='text-center mb-14'>
+
+          <div className='text-center mb-14'>
            <p className='text-sm text-white py-1 rounded px-3 bg-gray-600 inline'>Your Dental Health is in Good Hands</p>
            <h2 className='text-5xl font-semibold mt-5 font-Merry' >My All Services</h2>
            <p className='p-6'>
@@ -26,7 +27,8 @@ const Services = () => {
             services.map(service => <ServiceCard key={service._id} service={service}/>)
         }
        </div>
-        </div>
+
+      </div>
     );
 };
 

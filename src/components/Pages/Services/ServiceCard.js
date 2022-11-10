@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
+
+  
   return (
     <div className="mx-auto">
       <div className="w-full max-w-sm overflow-hidden rounded-lg shadow-xl p-2 border border-gray-200">
