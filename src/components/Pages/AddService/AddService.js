@@ -62,17 +62,17 @@ const handleAddService = event => {
           <div className="flex flex-col justify-center  items-center gap-3  p-20">
             <input 
               type="text" name="title"
-              placeholder="Service Title"
+              placeholder="Enter Service Title"
               className="input input-bordered focus:input-accent md:w-3/5" required
             />
             <input
               type="number" name="price"
-              placeholder="Service Price"
+              placeholder="Enter Service Price $"
               className="input input-bordered focus:input-accent md:w-3/5" required
             />
             <input
               type="text" name="serviceImg"
-              placeholder="Service PhotoURL"
+              placeholder="Enter Service PhotoURL"
               className="input input-bordered focus:input-accent md:w-3/5" required
             />
 
