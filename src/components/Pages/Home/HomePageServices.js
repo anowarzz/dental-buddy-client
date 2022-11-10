@@ -11,7 +11,7 @@ const HomePageServices = ({ service }) => {
       <PhotoView src={service?.img}>
       <img
           className="object-cover w-full h-64  hover:border-accent-content hover:border-transparent hover:border-4"
-          src={service?.img}
+          src={service?.img} 
           alt="avatar"
         />
       </PhotoView>
