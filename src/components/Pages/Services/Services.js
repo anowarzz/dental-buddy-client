@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
 
  const services = useLoaderData();
-    console.log(services);
+ useEffect(() => {
+    //  scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
     
 
     return (
