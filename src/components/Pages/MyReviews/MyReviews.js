@@ -7,20 +7,24 @@ const MyReviews = () => {
 const {user} = useContext(AuthContext)    
 const [reviews, setReviews] = useState([])
 console.log(user.email);
-console.log(reviews);
+
 
 
 
 useEffect( () => {
-    fetch(`http://localhost:5000/myReviews?email=${user?.email}`)
+  
+    fetch(`https://dental-buddy-server-anowarzz.vercel.app/myReviews?email=${user?.email}`)
     .then(res => res.json())
-    .then(data => setReviews(data))
+    .then(data => setReviews(data)
+     
+    )
   }, [user?.email])
   
 
 
   return (
     <div>
+       
         <div className="text-center mt-6 mb-12">
         <p  className="inline rounded-lg p-1 text-2xl md:text-4xl text-center text-gray-50 font-semibold mb-12 bg-gray-400">My All Reviews</p>
         </div>
