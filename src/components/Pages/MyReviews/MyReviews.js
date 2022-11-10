@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../context/AuthProvider";
 import MyReviewCard from "./MyReviewCard";
 
@@ -7,9 +8,6 @@ const MyReviews = () => {
 const {user} = useContext(AuthContext)    
 const [reviews, setReviews] = useState([])
 console.log(user.email);
-
-
-
 
 useEffect( () => {
   
@@ -20,19 +18,41 @@ useEffect( () => {
     )
   }, [user?.email])
   
+  const handleReviewDelete = (id) => {
+    const proceed = window.confirm('Are You Sure Want To Delete This Review')
+    if(proceed){
+    fetch(`https://dental-buddy-server-anowarzz.vercel.app/reviews/${id}`, {
+        method : 'DELETE',
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        if(data.deletedCount > 0){
+            console.log("deleted");
+            
+            toast.success('Review Deleted Successfully')
+            const remaining = reviews.filter(review => review._id !== id)
+            setReviews(remaining)
+        } 
+    })
+
+    }
+}
 
 
   return (
     <div className="">
        
         <div className="text-center mt-6 mb-12">
-        <p  className="inline rounded-lg p-1 text-2xl md:text-4xl text-center text-gray-50 font-semibold mb-12 bg-gray-800 text-white">My All Reviews</p>
+        <p  className="inline rounded-lg p-1 text-2xl md:text-4xl text-center text-gray-50 font-semibold mb-12 bg-gray-800 text-white">Your All Reviews</p>
         </div>
         {
             reviews.length ? 
             <div className="grid grid-cols md:grid-cols-2 gap-8">
             {
-                reviews.map(review => <MyReviewCard key={review._id} review={review}/>)
+                reviews.map(review => <MyReviewCard key={review._id} review={review}
+               handleReviewDelete = {handleReviewDelete} 
+                />)
             }
         </div> 
         :

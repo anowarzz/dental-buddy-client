@@ -1,6 +1,11 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
-const MyReviewCard = ({review}) => {
+const MyReviewCard = ({review, handleReviewDelete}) => {
+
+
+
+
 
 return (
         <div className='bg-gray-100 text-gray-800 mb-6 w-[95%] mx-auto max-w-lg'>
@@ -44,8 +49,8 @@ return (
        
       </div>
       <div className="text-center flex flex-col md:flex-row gap-4 justify-center items-center">
-          <button className="btn-sm bg-info font-semibold">Edit Review</button>
-          <button className="btn-sm bg-Red font-semibold">Delete Review</button>
+          <button  className="btn-sm bg-info font-semibold">Edit Review</button>
+          <button onClick={() => handleReviewDelete(review._id)} className="btn-sm bg-Red font-semibold">Delete Review</button>
         </div>
         </div>
     );

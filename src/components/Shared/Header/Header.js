@@ -22,7 +22,7 @@ const logOutHandler = () => {
 
   return (
     <div>
-      <div className="z-20 px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div className="z-20 px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-lg ">
         <div className="relative flex items-center justify-between">
           <NavLink
             to="/"

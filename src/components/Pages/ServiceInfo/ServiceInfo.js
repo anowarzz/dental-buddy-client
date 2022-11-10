@@ -41,7 +41,8 @@ const handleAddReview = (event) => {
           userName: user.displayName,
           userImg :user.photoURL,
           email: user.email,
-          reviewText
+          reviewText,
+          created: new Date()
         }
 
         fetch('https://dental-buddy-server.vercel.app/reviews', {

@@ -15,7 +15,8 @@ const handleAddService = event => {
     title,
     img,
     price,
-    description
+    description,
+    created: new Date()
   }
 
   fetch('https://dental-buddy-server.vercel.app/services', {
