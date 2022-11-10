@@ -36,6 +36,8 @@ const handleAddReview = (event) => {
 
         const submitReview = {
           serviceId : serviceInfo._id,
+          serviceTitle: serviceInfo.title,
+          serviceImg: serviceInfo.img,
           userName: user.displayName,
           userImg :user.photoURL,
           email: user.email,

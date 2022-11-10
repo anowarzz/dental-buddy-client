@@ -2,11 +2,14 @@ import React from 'react';
 
 const MyReviewCard = ({review}) => {
 
-
-    return (
-        <div>
+return (
+        <div className='bg-gray-100 text-gray-800 mb-6 w-[95%] mx-auto max-w-lg'>
+            <div className='mt-6 flex flex-col justify-center items-center gap-5'>
+                <h2 className='text-center font-Merry font-semibold text-xl'>{review.serviceTitle}</h2>
+                <img src={review.serviceImg} className="w-32" alt="" />
+            </div>
           
-      <div className="container flex flex-col w-full  p-6 mx-auto divide-y rounded-md divide-gray-400 bg-gray-100 text-gray-800">
+      <div className="container flex flex-col w-full  p-6 mx-auto divide-y rounded-md divide-gray-400 ">
         <div className="flex justify-between p-4">
           <div className="flex space-x-4">
             <div>
