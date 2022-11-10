@@ -1,31 +1,65 @@
 
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import ReviewCard from "../ReviewCard/ReviewCard";
 
 const ServiceInfo = () => {
+  //  scroll to top on page load
   useEffect(() => {
-    //  scroll to top on page load
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
 
 const [reviews, setReviews] = useState([]);
-console.log(reviews);
 
+const { user } = useContext(AuthContext);
+const serviceInfo = useLoaderData();
+
+console.log(user);
 
 
 useEffect( () => {
   fetch('https://dental-buddy-server.vercel.app/reviews')
   .then(res => res.json())
   .then(data => setReviews(data))
-}, [])
+}, [reviews])
 
    
-  const { user } = useContext(AuthContext);
-  const serviceInfo = useLoaderData();
+const handleAddReview = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const reviewText = form.reviewText.value;
+          console.log(reviewText);
+          
 
+        const submitReview = {
+          serviceId : serviceInfo._id,
+          userName: user.displayName,
+          userImg :user.photoURL,
+          email: user.email,
+          reviewText
+        }
+
+        fetch('https://dental-buddy-server.vercel.app/reviews', {
+          method: 'POST',
+          headers: {
+            'content-type' : 'application/json'
+          },
+          body: JSON.stringify(submitReview)
+        })
+        .then(res => res.json())
+        .then(data =>  {
+          console.log(data);
+          if(data.acknowledged){
+            toast.success('Review Submitted Successfully') 
+            form.reset();
+          }
+        })
+        .catch(err => console.error(err))
+
+}
 
   return (
     <div className="border border-gray-200 shadow-inner">
@@ -64,7 +98,7 @@ useEffect( () => {
             </h4>
 
             {user?.uid ? (
-              <form className=''>
+              <form onSubmit={handleAddReview} className=''>
               <div className="flex flex-col justify-center  items-center gap-3 mt-16 mb-10">
                 
                
@@ -78,7 +112,7 @@ useEffect( () => {
                   className="input input-bordered focus:input-accent md:w-3/5 my-6" required
                 /> */}
      
-                <textarea name="Review"
+                <textarea name="reviewText"
                   className="textarea textarea-bordered focus:textarea-accent h-24 w-3/5 text-center"
                   placeholder="Please Write Your Review" required
                 ></textarea>

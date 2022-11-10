@@ -12,7 +12,14 @@ const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
   // context and states
-  const { createNewUser, updateUserProfile, googleLogIn, setUser,loading, setLoading} = useContext(AuthContext);
+  const {
+    createNewUser,
+    updateUserProfile,
+    googleLogIn,
+    setUser,
+    loading,
+    setLoading,
+  } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   // location
@@ -22,7 +29,7 @@ const Register = () => {
 
   const handleCreateUser = (event) => {
     event.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -47,18 +54,15 @@ const Register = () => {
     createNewUser(email, password).then((result) => {
       const user = result.user;
       console.log(user);
-      handleUpdateUserProfile(name, photo);
       setError("");
-      setLoading(false)
+      setLoading(false);
       toast.success("Registration Successful");
+      handleUpdateUserProfile(name, photo);
       navigate(from, { replace: true });
     });
 
     const handleUpdateUserProfile = (name, photo) => {
-      const profile = {
-        displayName: name,
-        photoURL: photo,
-      };
+      const profile = {displayName: name, photoURL: photo};
 
       updateUserProfile(profile)
         .then(() => {})
@@ -66,36 +70,29 @@ const Register = () => {
     };
   };
 
-
-// Register With google 
-const handleGoogleRegister = () => {
-  googleLogIn(googleProvider)
-
-  .then(result => {
-    const user = result.user;
-    setUser(user);
-    toast.success('Login Successful')
-    navigate(from, {replace:true})
-  })
-  .catch(err => {
-    console.error(err)
-    setError(err.message)
-  })
-}
-
-
+  // Register With google
+  const handleGoogleRegister = () => {
+    googleLogIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        toast.success("Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
+  };
 
   return (
     <div>
       <div className="hero w-full my-20">
-      {
-  loading && <div className="z-20 absolute top-40">
-     <ScaleLoader
-  color="#36d7b7"
-  size={100}
-/>
-  </div>
-}
+        {loading && (
+          <div className="z-20 absolute top-40">
+            <ScaleLoader color="#36d7b7" size={100} />
+          </div>
+        )}
         <div className="hero-content grid md:grid-cols-2 gap-2 flex-col lg:flex-row items-center justify-center">
           <div className="text-center lg:text-left">
             <Lottie animationData={register} loop={true} />
@@ -171,7 +168,10 @@ const handleGoogleRegister = () => {
                 <p className="text-Red font-bold text-center mb-3">{error}</p>
               )}
               <div className="form-control mt-6">
-                <button className="btn bg-primary hover:bg-success border-none" type="submit">
+                <button
+                  className="btn bg-primary hover:bg-success border-none"
+                  type="submit"
+                >
                   Register
                 </button>
               </div>
