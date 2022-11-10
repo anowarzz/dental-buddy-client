@@ -64,12 +64,12 @@ const ServiceInfo = () => {
               <div className="px-4 py-2 bg-purple-700 text-white mt-8 w-3/5 mx-auto ">
                 <div className="container mx-auto">
                   <div className="flex flex-col lg:flex-row items-center justify-around">
-                    <h2 className="text-center text-xl tracking-tighter font-bold">
+                    <h2 className="text-center text-xl text-gray-50 tracking-tighter font-bold">
                       Pleas Login To Add A Review
                     </h2>
                     <Link
                       to="/login"
-                      className="px-6 font-Merry font-semibold mt-4 lg:mt-0 py-3 rounded-md border block bg-white text-gray-800 text-gray-50 border-gray-600"
+                      className="px-6 font-Merry font-semibold mt-4 lg:mt-0 py-3 rounded-md border block bg-white text-gray-800"
                     >
                       Log In
                     </Link>

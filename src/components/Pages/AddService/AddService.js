@@ -20,19 +20,24 @@ const AddService = () => {
             <input 
               type="text" name="title"
               placeholder="Service Title"
-              className="input input-accent md:w-3/5"
+              className="input input-bordered focus:input-accent md:w-3/5"
+            />
+            <input
+              type="text" name="price"
+              placeholder="Service Price"
+              className="input input-bordered focus:input-accent md:w-3/5"
             />
             <input
               type="text" name="servicePhoto"
               placeholder="Service PhotoURL"
-              className="input input-accent md:w-3/5"
+              className="input input-bordered focus:input-accent md:w-3/5"
             />
 
           </div>
 
           <div className="flex flex-col justify-center items-center">
             <textarea name="serviceDescription"
-              className="textarea textarea-accent h-24 w-3/5 text-center"
+              className="textarea textarea-bordered focus:textarea-accent h-24 w-3/5 text-center"
               placeholder="Add Service Description"
             ></textarea>
 
