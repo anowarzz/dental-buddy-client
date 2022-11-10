@@ -1,5 +1,6 @@
 import React from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const MyReviewCard = ({review, handleReviewDelete}) => {
 
@@ -49,9 +50,18 @@ return (
        
       </div>
       <div className="text-center flex flex-col md:flex-row gap-4 justify-center items-center">
-          <button  className="btn-sm bg-info font-semibold">Edit Review</button>
+         
+          <Link to="/edit-review">
+          <button className="btn-sm bg-info font-semibold">Edit Review
+          </button>
+          </Link>
+        
           <button onClick={() => handleReviewDelete(review._id)} className="btn-sm bg-Red font-semibold">Delete Review</button>
         </div>
+
+
+
+
         </div>
     );
 };

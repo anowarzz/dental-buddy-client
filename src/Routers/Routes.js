@@ -10,8 +10,7 @@ import AddService from "../components/Pages/AddService/AddService";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import ServiceInfo from "../components/Pages/ServiceInfo/ServiceInfo";
 import Services from "../components/Pages/Services/Services"
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthProvider";
+import EditReview from "../components/Pages/MyReviews/EditReview";
 
 
 
@@ -28,10 +27,6 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
-        loader: () => {
-           return fetch("https://dental-buddy-server.vercel.app/services")
-            
-        },
       },
       {
         path: "/my-reviews",
@@ -60,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/edit-review",
+        element: <EditReview />
       },
       {
         path: "/services/:id",

@@ -1,23 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { ScaleLoader } from "react-spinners";
 import { AuthContext } from "../../../context/AuthProvider";
 import MyReviewCard from "./MyReviewCard";
 
 const MyReviews = () => {
 
-const {user} = useContext(AuthContext)    
+const {user, loading, setLoading} = useContext(AuthContext)    
 const [reviews, setReviews] = useState([])
-console.log(user.email);
+
 
 useEffect( () => {
-  
+//   Loading All Reviews of a User Using Email
+ 
     fetch(`https://dental-buddy-server-anowarzz.vercel.app/myReviews?email=${user?.email}`)
     .then(res => res.json())
-    .then(data => setReviews(data)
+    .then(data => {
+        setReviews(data)
+        
+    }
      
     )
-  }, [user?.email])
-  
+  }, [user?.email],)
+
+
+//  Deleting Single Review Using Id
   const handleReviewDelete = (id) => {
     const proceed = window.confirm('Are You Sure Want To Delete This Review')
     if(proceed){
@@ -42,12 +49,11 @@ useEffect( () => {
 
   return (
     <div className="">
-       
         <div className="text-center mt-6 mb-12">
         <p  className="inline rounded-lg p-1 text-2xl md:text-4xl text-center text-gray-50 font-semibold mb-12 bg-gray-800 text-white">Your All Reviews</p>
         </div>
         {
-            reviews.length ? 
+            reviews.length !== 0 ? 
             <div className="grid grid-cols md:grid-cols-2 gap-8">
             {
                 reviews.map(review => <MyReviewCard key={review._id} review={review}

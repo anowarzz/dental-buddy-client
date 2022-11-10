@@ -1,26 +1,45 @@
-import React, { useEffect } from "react";
-import { useLoaderData } from "react-router-dom";
-
+import React, { useContext, useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
+import { AuthContext } from "../../../context/AuthProvider";
+import { ScaleLoader } from "react-spinners";
+
+
+
 
 const Services = () => {
-  const services = useLoaderData();
-
   useEffect(() => {
     //  scroll to top on page load
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+
+  const {loading, setLoading} = useContext(AuthContext)
+  const [services, setServices] = useState([])
+
+
+
+  useEffect( () => {
+    setLoading(true)
+    fetch("https://dental-buddy-server.vercel.app/services")
+    .then(res => res.json())
+    .then(data => {
+      setServices(data)
+      setLoading(false)
+    })
+  
+  }, [])
+
+
+
   return (
     <div className="mb-24">
-      {/* {
-  loading && <div className="z-20 absolute top-40">
-     <ScaleLoader
-  color="#36d7b7"
-  size={100}
-/>
-  </div>
-} */}
+
+  {loading && (
+          <div className="z-20 absolute top-2/4 left-2/4 w-96 min-h-screen">
+            <ScaleLoader color="#36d7b7" size={150} />
+          </div>
+
+        )}
 
       <div className="text-center mb-14">
         <p className="text-sm text-white py-1 rounded px-3 bg-gray-600 inline">
