@@ -7,10 +7,13 @@ import { AuthContext } from "../../../context/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
 import { ScaleLoader } from "react-spinners";
+import useTitle from "../../../Hooks/useTitle";
 
 const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
+useTitle('Register')
+
   // context and states
   const {
     createNewUser,

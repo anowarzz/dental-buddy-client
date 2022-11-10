@@ -3,10 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import banner from '../../../assets/dental-banner.jpg'
+import useTitle from '../../../Hooks/useTitle';
 import HomePageServices from './HomePageServices';
 
 
 const Home = () => {
+useTitle('Home')
+
 
 const [services, setServices] = useState([]);
 

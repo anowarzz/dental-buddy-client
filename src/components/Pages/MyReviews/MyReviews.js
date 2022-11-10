@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { ScaleLoader } from "react-spinners";
 import { AuthContext } from "../../../context/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 import MyReviewCard from "./MyReviewCard";
 
 const MyReviews = () => {
-
-const {user, loading, setLoading} = useContext(AuthContext)    
+useTitle('My Reviews')
+const {user} = useContext(AuthContext)    
 const [reviews, setReviews] = useState([])
 
 

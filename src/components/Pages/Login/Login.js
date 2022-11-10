@@ -7,12 +7,17 @@ import { AuthContext } from "../../../context/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
 import { ScaleLoader } from "react-spinners";
+import useTitle from "../../../Hooks/useTitle";
 
 
 
 const googleProvider = new GoogleAuthProvider();
 
+
 const Login = () => {
+
+useTitle('Login')
+
   // Contest
   const {setUser, logIn, googleLogIn, loading, setLoading} =
     useContext(AuthContext);
@@ -93,8 +98,7 @@ const handleGoogleLogin = () => {
                 name="email"
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered"
-              />
+                className="input input-bordered" required              />
             </div>
             <div className="form-control">
               <label className="label">
@@ -104,7 +108,7 @@ const handleGoogleLogin = () => {
                 name="password"
                 type="password"
                 placeholder="Your Password"
-                className="input input-bordered"
+                className="input input-bordered" required
               />
             </div>
 

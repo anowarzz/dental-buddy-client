@@ -2,11 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import { AuthContext } from "../../../context/AuthProvider";
 import { ScaleLoader } from "react-spinners";
+import useTitle from "../../../Hooks/useTitle";
 
 
 
 
 const Services = () => {
+
+useTitle('Services')
+
   useEffect(() => {
     //  scroll to top on page load
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
