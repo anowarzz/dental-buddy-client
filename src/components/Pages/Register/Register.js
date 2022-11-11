@@ -172,7 +172,7 @@ useTitle('Register')
               )}
               <div className="form-control mt-6">
                 <button
-                  className="btn bg-primary hover:bg-success border-none"
+                  className="btn bg-purple-600 hover:bg-success border-none"
                   type="submit"
                 >
                   Register

@@ -12,8 +12,7 @@ const MyReviews = () => {
   useEffect(() => {
     //   Loading All Reviews of a User Using Email
 
-    fetch(
-      `https://dental-buddy-server-anowarzz.vercel.app/myReviews?email=${user?.email}`, {
+    fetch(`https://dental-buddy-server.vercel.app/myReviews?email=${user?.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('dental-token')}`
         }
@@ -35,7 +34,7 @@ const MyReviews = () => {
   const handleReviewDelete = (id) => {
     const proceed = window.confirm("Are You Sure Want To Delete This Review");
     if (proceed) {
-      fetch(`https://dental-buddy-server-anowarzz.vercel.app/reviews/${id}`, {
+      fetch(`https://https://dental-buddy-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -52,32 +51,32 @@ const MyReviews = () => {
     }
   };
 
-  const handleReviewUpdate = (event, id) => {
-    event.preventDefault();
+//   const handleReviewUpdate = (event, id) => {
+//     event.preventDefault();
     
-    const form = event.target.value;
-    const reviewText = form.reviewText.value;
+//     const form = event.target.value;
+//     const reviewText = form.reviewText.value;
     
-      fetch(`https://dental-buddy-server-anowarzz.vercel.app/reviews/${id}`, {
-        method: 'PATCH', 
-        headers: {
-          'content-type' : 'application/json',
-        },
-        body: JSON.stringify(reviewText)
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        if(data.modifiedCount > 0){
-          toast.success('Review Updated')
+//       fetch(`https://https://dental-buddy-server.vercel.app/reviews/${id}`, {
+//         method: 'PATCH', 
+//         headers: {
+//           'content-type' : 'application/json',
+//         },
+//         body: JSON.stringify(reviewText)
+//       })
+//       .then(res => res.json())
+//       .then(data => {
+//         console.log(data)
+//         if(data.modifiedCount > 0){
+//           toast.success('Review Updated')
     
-          const unchangedReview = reviews.filter(review => review._id !== id)
-          const changedReview = reviews.find(review => review._id === id)
-          const newReviews = [changedReview,...unchangedReview]
-          setReviews(newReviews)
-        }
-      })
-    }
+//           const unchangedReview = reviews.filter(review => review._id !== id)
+//           const changedReview = reviews.find(review => review._id === id)
+//           const newReviews = [changedReview,...unchangedReview]
+//           setReviews(newReviews)
+//         }
+//       })
+//     }
     
 
 
@@ -99,7 +98,7 @@ const MyReviews = () => {
               key={review._id}
               review={review}
               handleReviewDelete = {handleReviewDelete}
-              handleReviewUpdate = {handleReviewUpdate}
+              
             />
           ))}
         </div>
