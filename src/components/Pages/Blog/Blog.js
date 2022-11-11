@@ -2,83 +2,155 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div className="h-full w-[95%] md:w-[85%] mx-auto border-gray-100 pb-12 border mt-8 shadow-lg rounded">
-      <h1 className="text-2xl md:text-3xl font-bold text-center pt-4 pb-10 ">
-       Node Js And Database Basic Concepts
+    <div className="w-[98%] mx-auto border-gray-100 pb-12 border mt-8 shadow-lg rounded">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center pt-4 pb-10 ">
+        Node Js And Database Basic Concepts
       </h1>
 
       <div className="mt-16  rounded w-[80%] mx-auto p-6">
         <h3 className="text-2xl md:text-3xl p-2 font-bold ">
-       What Are The  Differences between SQL and NoSQL
+          1. What Are The Differences between SQL and NoSQL ??
+        </h3>
+
+        <div className="overflow-x-auto mt-8">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>SQL Database</th>
+                <th>NoSQL Database</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  SQL Databases follows RELATIONAL DATABASE MANAGEMENT SYSTEM
+                  (RDBMS){" "}
+                </td>
+                <td>
+                  NoSQL Database Does Not Follows RELATIONAL DATABASE MANAGEMENT
+                  SYSTEM
+                </td>
+              </tr>
+
+              <tr className="hover">
+                <td>SQL Database is Vertically Scalable</td>
+                <td>NoSQL Database is Horizontally Scalable </td>
+              </tr>
+
+              <tr>
+                <td>SQL has fixed predefined schema</td>
+                <td>No SQL has dynamic schema</td>
+              </tr>
+              <tr>
+                <td>SQL is not suitable for hierarchical data storage</td>
+                <td>No SQL is best suitable for hierarchical data storage</td>
+              </tr>
+              <tr>
+                <td>SQL can be used for complex large scale queries</td>
+                <td>No SQL is not good for large complex queries</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="mt-16  rounded  w-[80%] mx-auto p-6">
+        <h3 className="text-2xl md:text-3xl p-2 font-bold">
+          2. What is JWT, and how does it work?{" "}
         </h3>
 
         <p className="mt-6 text-lg">
-        “CORS” stands for Cross-Origin Resource Sharing. CORS is a protocol and security standard for browsers that helps to maintain the integrity of a website and secure it from unauthorized access.
-        CORS is a security standard implemented by browsers that enable scripts running in browsers to access resources located outside of the browser’s domain.
+          {" "}
+          JWT or JSON Web Token is away for securely transmitting information
+          between parties as a JSON object. JSON Web Token is an open industry
+          standard used to share information between two entities, usually a
+          client (like your app’s frontend) and a server (your app’s
+          backend).They contain JSON objects which have the information that
+          needs to be shared. Each JWT is also signed using cryptography
+          (hashing) to ensure that the JSON contents (also known as JWT claims)
+          cannot be altered by the client or a malicious party.
         </p>
-      </div>
-
-      <div className="mt-16  rounded  w-[80%] mx-auto p-6">
-        <h3 className="text-2xl md:text-3xl p-2 font-bold">2. Why Do We Use Firebase ? <br /> What other options do you have to implement authentication? </h3>
-
-        <p className="mt-6 text-lg">
-        Firebase is a software development platform offered by Google. It helps to quickly build web applications without managing infrastructure. Before we discuss the pros and cons of using Firebase, let’s cover its best features. Basically, it consists of dozens of helpful services inside, including Authenticaton, Hosting, Cloud Storage.
-         Other Alternative systems that we can use to implement are:
-        </p>
-        <ul className="text-lg text-center">
-            <li>STYTCH</li>
-            <li>Ory</li>
-            <li>Supabase</li>
-            <li>Okta</li>
-            <li>PingIdentity</li>
-        </ul>
       </div>
 
       <div className="mt-16 rounded w-[80%] mx-auto p-6">
-        <h3 className="text-2xl md:text-3xl p-2 font-bold ">3. What is Node? How Does Node work? ? </h3>
+        <h3 className="text-2xl md:text-3xl p-2 font-bold ">
+          3. What is the difference between Javascript and NodeJS?
+        </h3>
 
-        <p className="mt-6 text-lg">
-        Node.js is an open-source, cross-platform JavaScript runtime environment and library for running web applications outside the client's browser. Ryan Dahl developed it in 2009, and its latest iteration, version 15.14, was released in April 2021. Developers use Node.js to create server-side web applications, and it is perfect for data-intensive applications since it uses 
+        <div className="overflow-x-auto mt-8">
+          <table className="table w-[100%]">
+            <thead>
+              <tr>
+                <th>JavaScript</th>
+                <th>Node Js</th>
+              </tr>
+            </thead>
 
-        </p>
+            <tbody>
+              <tr>
+                <td>
+                  JavaScript is an open source, cross platform lightweight <br />
+                  scripting programming language, used in developing dynamic web
+                  applications
+                </td>
+                <td>
+                  Node Js is a JavaScript runtime environment , which allows
+                  JavaScript to run on the server
+                </td>
+              </tr>
 
-        <p className="mt-6 text-lg">
-            Node Working Procedure  
-        </p>
-        <p>
-    <ol className="text-lg">
-        <li>
-        1. Node.js maintains a limited thread pool to serve requests.
-        </li>
-        2. Whenever a request comes, Node.js places it into a queue.
-        <li>
-        3. Now, the single-threaded “Event loop”—the core component—comes into the picture. This event loop waits for requests indefinitely.
-        </li>
-        4 . When a request comes in, the loop picks it up from the queue and checks whether it requires a blocking input/output (I/O) operation. If not, it processes the request and sends a response.
-        <li>
+              <tr className="hover">
+                <td>
+                  JavaScript is a programming language, works in any proper
+                  browser engine{" "}
+                </td>
+                <td>
+                  Node Js is a JavaScript interpreter with some valuable
+                  libraries
+                </td>
+              </tr>
 
-        </li>
-        5 . If the request has a blocking operation to perform, the event loop assigns a thread from the internal thread pool to process the request. There are limited internal threads available. This group of auxiliary threads is called the worker group.
-        <li>
-        6. The event loop tracks blocking requests and places them in the queue once the blocking task is processed. This is how it maintains its non-blocking nature.
-        </li>
-    </ol>
-        </p>
+              <tr>
+                <td>JavaScript is generally used on the client side server</td>
+                <td>Node Js is generally used on the server side</td>
+              </tr>
+
+              <tr>
+                <td>Javascript can run on any engine including V8</td>
+                <td>Node Js is only supported by v8 engine</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-
 
       <div className="mt-16  rounded  w-[80%] mx-auto p-6">
-        <h3 className="text-2xl md:text-3xl p-2 font-bold">3.  How does the private route work??</h3>
+        <h3 className="text-2xl md:text-3xl p-2 font-bold">
+          4. How does NodeJS handle multiple requests at the same time?
+        </h3>
 
         <p className="mt-6 text-lg">
-        Private Routes in React Router (also called Protected Routes) require a user being authorized to visit a route (read: page). So if a user is not authorized for a specific page, they cannot access it. The most common example is authentication in a React application where a user can only access the protected pages when they are authorized (which means in this case being authenticated). Authorization goes beyond authentication though. For example, a user can also have roles and permissions which give a user access to specific areas of the application.
+          NodeJS server uses an EventQueue, which queues incoming client
+          requests and an EventLoop which is an infinite loop that receives
+          requests and processes them. This EventLoop is single threaded and
+          acts as a listener for the EventQueue which processes incoming
+          requests based on FIFO policy. When a new request comes in, NodeJS
+          checks if it requires any blocking IO operations, if not, the
+          EventLoop processes it and sends the response back to the client
+          directly. If yes, then the request is forwarded to the thread manager,
+          which then based on an algorithm, picks up an idle thread from the
+          pool and lets it process the request. After completion of the request
+          processing operation, the thread, returns the response back to the
+          EventLoop which is then forwarded to the client. Thus, even if an
+          incoming request needs blocking IO, the thread pool allows it to run
+          asynchronously in the background without blocking the EventLoop and it
+          gives a seamless experience of NodeJS handling multiple incoming
+          requests concurrently without any persistent delays or bottlenecks.
         </p>
       </div>
-
-
     </div>
   );
 };
 
 export default Blog;
-                                                                                                                                                                                                                 
