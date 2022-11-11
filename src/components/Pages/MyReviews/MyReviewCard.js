@@ -26,6 +26,7 @@ const MyReviewCard = ({review, handleReviewDelete}) => {
           console.log(data)
           if(data.modifiedCount > 0){
             toast.success('Review Updated')
+            form.reset();
 
           }
         })
