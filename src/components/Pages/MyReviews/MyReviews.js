@@ -6,44 +6,49 @@ import MyReviewCard from "./MyReviewCard";
 
 const MyReviews = () => {
   useTitle("My Reviews");
-  const { user , logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     //   Loading All Reviews of a User Using Email
 
-    fetch(`https://dental-buddy-server.vercel.app/myReviews?email=${user?.email}`, {
+    fetch(
+      `https://dental-buddy-server.vercel.app/myReviews?email=${user?.email}`,
+      {
         headers: {
-            authorization: `Bearer ${localStorage.getItem('dental-token')}`
-        }
+          authorization: `Bearer ${localStorage.getItem("dental-token")}`,
+        },
       }
     )
       .then((res) => {
-        if(res.status === 401 || res.status === 403){
-            localStorage.removeItem('dental-token');
-            return logOut();
+        if (res.status === 401 || res.status === 403) {
+          localStorage.removeItem("dental-token");
+          return logOut();
         }
         return res.json();
       })
       .then((data) => {
         setReviews(data);
       });
-  }, [user?.email, logOut]);
+  }, [user?.email, reviews, logOut]);
 
   //  Deleting Single Review Using Id
   const handleReviewDelete = (id) => {
     const proceed = window.confirm("Are You Sure Want To Delete This Review");
     if (proceed) {
-      fetch(`https://https://dental-buddy-server.vercel.app/reviews/${id}`, {
+      fetch(`https://dental-buddy-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("dental-token")}`,
+          },
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if (data.deletedCount > 0) {
+          if (data?.deletedCount > 0) {
             console.log("deleted");
 
-            toast.success("Review Deleted Successfully");
+           toast.success('Review Deleted Successfuly')
             const remaining = reviews.filter((review) => review._id !== id);
             setReviews(remaining);
           }
@@ -51,38 +56,32 @@ const MyReviews = () => {
     }
   };
 
-//   const handleReviewUpdate = (event, id) => {
-//     event.preventDefault();
-    
-//     const form = event.target.value;
-//     const reviewText = form.reviewText.value;
-    
-//       fetch(`https://https://dental-buddy-server.vercel.app/reviews/${id}`, {
-//         method: 'PATCH', 
-//         headers: {
-//           'content-type' : 'application/json',
-//         },
-//         body: JSON.stringify(reviewText)
-//       })
-//       .then(res => res.json())
-//       .then(data => {
-//         console.log(data)
-//         if(data.modifiedCount > 0){
-//           toast.success('Review Updated')
-    
-//           const unchangedReview = reviews.filter(review => review._id !== id)
-//           const changedReview = reviews.find(review => review._id === id)
-//           const newReviews = [changedReview,...unchangedReview]
-//           setReviews(newReviews)
-//         }
-//       })
-//     }
-    
+  //   const handleReviewUpdate = (event, id) => {
+  //     event.preventDefault();
 
+  //     const form = event.target.value;
+  //     const reviewText = form.reviewText.value;
 
+  //       fetch(`https://https://dental-buddy-server.vercel.app/reviews/${id}`, {
+  //         method: 'PATCH',
+  //         headers: {
+  //           'content-type' : 'application/json',
+  //         },
+  //         body: JSON.stringify(reviewText)
+  //       })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         console.log(data)
+  //         if(data.modifiedCount > 0){
+  //           toast.success('Review Updated')
 
-
-
+  //           const unchangedReview = reviews.filter(review => review._id !== id)
+  //           const changedReview = reviews.find(review => review._id === id)
+  //           const newReviews = [changedReview,...unchangedReview]
+  //           setReviews(newReviews)
+  //         }
+  //       })
+  //     }
 
   return (
     <div className="">
@@ -97,8 +96,7 @@ const MyReviews = () => {
             <MyReviewCard
               key={review._id}
               review={review}
-              handleReviewDelete = {handleReviewDelete}
-              
+              handleReviewDelete={handleReviewDelete}
             />
           ))}
         </div>
