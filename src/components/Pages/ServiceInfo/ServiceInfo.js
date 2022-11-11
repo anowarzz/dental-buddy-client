@@ -17,8 +17,6 @@ const [reviews, setReviews] = useState([]);
 const { user } = useContext(AuthContext);
 const serviceInfo = useLoaderData();
 
-console.log(user);
-
 
 useEffect( () => {
   fetch(`https://dental-buddy-server.vercel.app/serviceReviews?serviceId=${serviceInfo._id}`)
