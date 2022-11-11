@@ -53,7 +53,7 @@ useEffect( () => {
         <p  className="inline rounded-lg p-1 text-2xl md:text-4xl text-center text-gray-50 font-semibold mb-12 bg-gray-800 text-white">Your All Reviews</p>
         </div>
         {
-            reviews.length !== 0 ? 
+            reviews.length > 0 ? 
             <div className="grid grid-cols md:grid-cols-2 gap-8">
             {
                 reviews.map(review => <MyReviewCard key={review._id} review={review}

@@ -21,7 +21,7 @@ console.log(user);
 
 
 useEffect( () => {
-  fetch('https://dental-buddy-server.vercel.app/reviews')
+  fetch(`https://dental-buddy-server.vercel.app/serviceReviews?serviceId=${serviceInfo._id}`)
   .then(res => res.json())
   .then(data => setReviews(data))
 }, [reviews])
@@ -128,7 +128,7 @@ const handleAddReview = (event) => {
               </div>
             </form>
             ) : (
-              <div className="px-4 py-2 bg-purple-700 text-white mt-8 w-3/5 mx-auto ">
+              <div className="px-4 py-2 bg-purple-700 text-white my-8 w-3/5 mx-auto ">
                 <div className="container mx-auto">
                   <div className="flex flex-col lg:flex-row items-center justify-around">
                     <h2 className="text-center text-xl text-gray-50 tracking-tighter font-bold">
