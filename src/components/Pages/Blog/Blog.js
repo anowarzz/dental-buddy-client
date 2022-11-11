@@ -3,13 +3,13 @@ import React from "react";
 const Blog = () => {
   return (
     <div className="h-full w-[95%] md:w-[85%] mx-auto border-gray-100 pb-12 border mt-8 shadow-lg rounded">
-      <h1 className="text-2xl md:text-3xl font-bold text-center pt-8 pb-10 ">
-        Firebase Authentication 
+      <h1 className="text-2xl md:text-3xl font-bold text-center pt-4 pb-10 ">
+       Node Js And Database Basic Concepts
       </h1>
 
       <div className="mt-16  rounded w-[80%] mx-auto p-6">
         <h3 className="text-2xl md:text-3xl p-2 font-bold ">
-          1. What Is <code>Cors</code> ?
+       What Are The  Differences between SQL and NoSQL
         </h3>
 
         <p className="mt-6 text-lg">

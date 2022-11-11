@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import banner from '../../../assets/dental-banner.jpg'
 import useTitle from '../../../Hooks/useTitle';
+import DoctorSection from './DoctorSection';
 import HomePageServices from './HomePageServices';
+import HomeSection from './HomeSection';
 
 
 const Home = () => {
@@ -65,6 +67,15 @@ useEffect( () => {
 </button>
 </Link>
       </div>
+
+
+<div className='my-20'>
+  <DoctorSection />
+</div>
+      <div>
+        <HomeSection />
+      </div>
+
   
         </div>
     );
