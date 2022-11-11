@@ -56,32 +56,7 @@ const MyReviews = () => {
     }
   };
 
-  //   const handleReviewUpdate = (event, id) => {
-  //     event.preventDefault();
 
-  //     const form = event.target.value;
-  //     const reviewText = form.reviewText.value;
-
-  //       fetch(`https://https://dental-buddy-server.vercel.app/reviews/${id}`, {
-  //         method: 'PATCH',
-  //         headers: {
-  //           'content-type' : 'application/json',
-  //         },
-  //         body: JSON.stringify(reviewText)
-  //       })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         console.log(data)
-  //         if(data.modifiedCount > 0){
-  //           toast.success('Review Updated')
-
-  //           const unchangedReview = reviews.filter(review => review._id !== id)
-  //           const changedReview = reviews.find(review => review._id === id)
-  //           const newReviews = [changedReview,...unchangedReview]
-  //           setReviews(newReviews)
-  //         }
-  //       })
-  //     }
 
   return (
     <div className="">

@@ -88,11 +88,12 @@ const handleAddService = event => {
               placeholder="Add Service Description" required
             ></textarea>
 
-            <input
-              type="submit"
-              value="Add Service"
-              className="btn bg-success my-8 border-none md:w-3/5"
-            />
+            <button  type="submit"
+              className="btn bg-purple-600 my-8 border-none md:w-3/5"> 
+              Add Service
+              </button>
+             
+      
           </div>
         </form>
       </div>

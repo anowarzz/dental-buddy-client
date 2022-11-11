@@ -2,7 +2,34 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const MyReviewCard = ({review, handleReviewDelete, handleReviewUpdate}) => {
+const MyReviewCard = ({review, handleReviewDelete}) => {
+
+
+    const handleReviewUpdate = (event, id) => {
+      event.preventDefault();
+
+      const form = event.target;
+      const review = form.reviewText.value;
+      const reviewText = {
+        reviewText : review
+      }
+
+        fetch(`https://dental-buddy-server.vercel.app/reviews/${id}`, {
+          method: 'PUT',
+          headers: {
+            'content-type' : 'application/json',
+          },
+          body: JSON.stringify(reviewText)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          if(data.modifiedCount > 0){
+            toast.success('Review Updated')
+
+          }
+        })
+      }
 
 
 
@@ -42,15 +69,16 @@ return (
       </div>
       <div className="text-center flex flex-col md:flex-row gap-4 justify-center items-center">
          
-          <Link>
-          <button className="btn-sm bg-info font-semibold">Edit Review
-          </button>
-          </Link>
+    
+          {/* <button className="btn-sm bg-info font-semibold">Edit Review
+          </button> */}
+          <label htmlFor="editReview" className="btn-sm bg-blue-400 font-semibold text-gray-200 pt-1">Edit Review</label>
           <button onClick={() => handleReviewDelete(review._id)} className="btn-sm bg-Red font-semibold">Delete Review</button>
         </div>
 
 {/* The button to open modal */}
-<label htmlFor="editReview" className="btn">Edit Review</label>
+
+
 
 {/* Modal Body */}
 <input type="checkbox" id="editReview" className="modal-toggle" />
@@ -60,16 +88,17 @@ return (
   <form onSubmit={(event) => handleReviewUpdate(event, review._id)} className=''>
              
               <div className="flex flex-col justify-center items-center">
-                <textarea name="reviewText" defaultValue={review?.reviewText} 
+                <textarea name="reviewText" 
                   className="textarea textarea-bordered focus:textarea-accent h-24 w-full text-center"
-                  placeholder="Please Write Your Review" required
+                  placeholder="Please Update Your Review" required
                 ></textarea>
     
-                <input
+                <button
                   type="submit"
-                  value="Submit Review"
-                  className="btn bg-success my-8 border-none md:w-3/5"
-                />
+                  className="btn bg-purple-600 my-8 border-none md:w-3/5"
+                > 
+                Submit Review
+                </button>
               </div>
             </form>
     <div className="modal-action">

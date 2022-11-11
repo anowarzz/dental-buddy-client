@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
@@ -11,56 +10,53 @@ const ServiceInfo = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+  const [reviews, setReviews] = useState([]);
 
-const [reviews, setReviews] = useState([]);
+  const { user } = useContext(AuthContext);
+  const serviceInfo = useLoaderData();
 
-const { user } = useContext(AuthContext);
-const serviceInfo = useLoaderData();
+  useEffect(() => {
+    fetch(
+      `https://dental-buddy-server.vercel.app/serviceReviews?serviceId=${serviceInfo._id}`
+    )
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, [reviews]);
 
+  const handleAddReview = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const reviewText = form.reviewText.value;
+    console.log(reviewText);
 
-useEffect( () => {
-  fetch(`https://dental-buddy-server.vercel.app/serviceReviews?serviceId=${serviceInfo._id}`)
-  .then(res => res.json())
-  .then(data => setReviews(data))
-}, [reviews])
+    const submitReview = {
+      serviceId: serviceInfo._id,
+      serviceTitle: serviceInfo.title,
+      serviceImg: serviceInfo.img,
+      userName: user.displayName,
+      userImg: user.photoURL,
+      email: user.email,
+      reviewText,
+      created: new Date(),
+    };
 
-   
-const handleAddReview = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const reviewText = form.reviewText.value;
-          console.log(reviewText);
-          
-
-        const submitReview = {
-          serviceId : serviceInfo._id,
-          serviceTitle: serviceInfo.title,
-          serviceImg: serviceInfo.img,
-          userName: user.displayName,
-          userImg :user.photoURL,
-          email: user.email,
-          reviewText,
-          created: new Date()
+    fetch("https://dental-buddy-server.vercel.app/reviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(submitReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Review Submitted Successfully");
+          form.reset();
         }
-
-        fetch('https://dental-buddy-server.vercel.app/reviews', {
-          method: 'POST',
-          headers: {
-            'content-type' : 'application/json'
-          },
-          body: JSON.stringify(submitReview)
-        })
-        .then(res => res.json())
-        .then(data =>  {
-          console.log(data);
-          if(data.acknowledged){
-            toast.success('Review Submitted Successfully') 
-            form.reset();
-          }
-        })
-        .catch(err => console.error(err))
-
-}
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="border border-gray-200 shadow-inner">
@@ -81,11 +77,11 @@ const handleAddReview = (event) => {
             <p className="font-semibold font-Merry bg-black rounded-xl inline w-fit text-white px-1 md:text-xl">
               Price : ${serviceInfo?.price}
             </p>
-           {
-            serviceInfo.ratings &&  <p className="font-semibold font-Merry bg-black rounded-xl text-white w-fit px-1 md:text-xl inline">
-            Ratings : {serviceInfo?.ratings}
-          </p>
-           }
+            {serviceInfo.ratings && (
+              <p className="font-semibold font-Merry bg-black rounded-xl text-white w-fit px-1 md:text-xl inline">
+                Ratings : {serviceInfo?.ratings}
+              </p>
+            )}
           </div>
 
           <div className="my-12">
@@ -99,28 +95,25 @@ const handleAddReview = (event) => {
             </h4>
 
             {user?.uid ? (
-              <form onSubmit={handleAddReview} className=''>
-              <div className="flex flex-col justify-center  items-center gap-3 mt-16 mb-10">
-                
-               
-               
-              </div>
-    
-              <div className="flex flex-col justify-center items-center">
-           
-     
-                <textarea name="reviewText"
-                  className="textarea textarea-bordered focus:textarea-accent h-24 w-3/5 text-center"
-                  placeholder="Please Write Your Review" required
-                ></textarea>
-    
-                <input
-                  type="submit"
-                  value="Submit Review"
-                  className="btn bg-success my-8 border-none md:w-3/5"
-                />
-              </div>
-            </form>
+              <form onSubmit={handleAddReview} className="">
+                <div className="flex flex-col justify-center  items-center gap-3 mt-16 mb-10"></div>
+
+                <div className="flex flex-col justify-center items-center">
+                  <textarea
+                    name="reviewText"
+                    className="textarea textarea-bordered focus:textarea-accent h-24 w-3/5 text-center"
+                    placeholder="Please Write Your Review"
+                    required
+                  ></textarea>
+                  <button
+                    type="submit"
+                    className="btn bg-purple-600 my-8 border-none md:w-3/5"
+                  >
+                    Submit Review
+                  </button>
+              
+                </div>
+              </form>
             ) : (
               <div className="px-4 py-2 bg-purple-700 text-white my-8 w-3/5 mx-auto ">
                 <div className="container mx-auto">
@@ -139,13 +132,11 @@ const handleAddReview = (event) => {
               </div>
             )}
 
-         <div className="grid grid-cols 1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-         {
-            reviews.map(review => <ReviewCard key={review._id} review={review}/>)
-           }
-
-         </div>
-
+            <div className="grid grid-cols 1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {reviews.map((review) => (
+                <ReviewCard key={review._id} review={review} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -154,4 +145,3 @@ const handleAddReview = (event) => {
 };
 
 export default ServiceInfo;
-
