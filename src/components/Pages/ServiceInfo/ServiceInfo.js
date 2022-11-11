@@ -107,11 +107,7 @@ const handleAddReview = (event) => {
               </div>
     
               <div className="flex flex-col justify-center items-center">
-              {/* <input
-                  type="number" name="rating" min="1" max="5" 
-                  placeholder="Enter Service Price $"
-                  className="input input-bordered focus:input-accent md:w-3/5 my-6" required
-                /> */}
+           
      
                 <textarea name="reviewText"
                   className="textarea textarea-bordered focus:textarea-accent h-24 w-3/5 text-center"

@@ -10,7 +10,7 @@ import AddService from "../components/Pages/AddService/AddService";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import ServiceInfo from "../components/Pages/ServiceInfo/ServiceInfo";
 import Services from "../components/Pages/Services/Services"
-import EditReview from "../components/Pages/MyReviews/EditReview";
+import EditReview from "../components/Pages/MyReviews/EditReview"
 
 
 
@@ -56,16 +56,21 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      {
-        path: "/edit-review",
-        element: <EditReview />
-      },
+
+      // {
+      //   path: "/editReview/:id",
+      //   element: <EditReview />,
+      //   loader: ({ params }) => {
+      //     return fetch(`http://localhost:5000/serviceReviews/${params.id}`)
+      //    }
+      // },
+
       {
         path: "/services/:id",
         element: <ServiceInfo />,
         loader: ({ params }) => {
          return fetch(`https://dental-buddy-server.vercel.app/services/${params.id}`);
-        },
+        }
       },
     ],
   },

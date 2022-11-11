@@ -9,17 +9,13 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { ScaleLoader } from "react-spinners";
 import useTitle from "../../../Hooks/useTitle";
 
-
-
 const googleProvider = new GoogleAuthProvider();
 
-
 const Login = () => {
-
-useTitle('Login')
+  useTitle("Login");
 
   // Contest
-  const {setUser, logIn, googleLogIn, loading, setLoading} =
+  const { setUser, logIn, googleLogIn, loading, setLoading } =
     useContext(AuthContext);
 
   // Error State
@@ -32,23 +28,39 @@ useTitle('Login')
 
   const handleLogIn = (event) => {
     event.preventDefault();
-    setLoading(true)
+    setLoading(true);
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
-
     logIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        setError("");
-        form.reset();
-        setLoading(false)
-        toast.success("Login Successful");
-        navigate(from, { replace: true });
-         
+
+        const currentUser = {
+          email: user.email,
+        };
+        console.log(currentUser);
+
+        // Get Jwt token
+        fetch("https://dental-buddy-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            // Storing Jwt in local storage
+            localStorage.setItem("dental-token", data.token);
+            setError("");
+            form.reset();
+            setLoading(false);
+            navigate(from, { replace: true });
+            toast.success("Login Successful");
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -56,33 +68,28 @@ useTitle('Login')
       });
   };
 
-// Login With google 
-const handleGoogleLogin = () => {
-  googleLogIn(googleProvider)
-
-  .then(result => {
-    const user = result.user;
-    setUser(user);
-    toast.success('Login Successful')
-    navigate(from, {replace:true})
-  })
-  .catch(err => {
-    console.error(err)
-    setError(err.message)
-  })
-}
-
+  // Login With google
+  const handleGoogleLogin = () => {
+    googleLogIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        toast.success("Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
+  };
 
   return (
     <div className="hero w-full my-20 ">
-{
-  loading && <div className="z-20 absolute top-40">
-     <ScaleLoader
-  color="#36d7b7"
-  size={100}
-/>
-  </div>
-}
+      {loading && (
+        <div className="z-20 absolute top-40">
+          <ScaleLoader color="#36d7b7" size={100} />
+        </div>
+      )}
       <div className="mx-auto hero-content grid md:grid-cols-2 flex-col lg:flex-row items-center justify-center">
         <div className="text-center lg:text-left">
           <Lottie animationData={login} loop={true} />
@@ -98,7 +105,9 @@ const handleGoogleLogin = () => {
                 name="email"
                 type="email"
                 placeholder="Your Email"
-                className="input input-bordered" required              />
+                className="input input-bordered"
+                required
+              />
             </div>
             <div className="form-control">
               <label className="label">
@@ -108,7 +117,8 @@ const handleGoogleLogin = () => {
                 name="password"
                 type="password"
                 placeholder="Your Password"
-                className="input input-bordered" required
+                className="input input-bordered"
+                required
               />
             </div>
 
@@ -123,7 +133,10 @@ const handleGoogleLogin = () => {
               <p className="text-Red font-bold text-center mb-3">{error}</p>
             )}
             <div className="form-control mt-6">
-              <button className="btn bg-primary hover:bg-success  border-none" type="submit">
+              <button
+                className="btn bg-primary hover:bg-success  border-none"
+                type="submit"
+              >
                 Login
               </button>
             </div>
@@ -140,10 +153,7 @@ const handleGoogleLogin = () => {
             </Link>
             <p className="text-center mt-4 ">
               New To Dental Buddy ?
-              <Link
-                to="/register"
-                className="font-bold hover:link pl-3"
-              >
+              <Link to="/register" className="font-bold hover:link pl-3">
                 Register
               </Link>
             </p>

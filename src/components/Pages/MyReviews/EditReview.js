@@ -2,10 +2,6 @@ import React from "react";
 
 const EditReview = () => {
 
-
-
-
-
   return (
     <div>
       <form>

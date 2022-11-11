@@ -2,9 +2,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
-const MyReviewCard = ({review, handleReviewDelete}) => {
-
-
+const MyReviewCard = ({review, handleReviewDelete, handleReviewUpdate}) => {
 
 
 
@@ -44,14 +42,41 @@ return (
       </div>
       <div className="text-center flex flex-col md:flex-row gap-4 justify-center items-center">
          
-          <Link to="/edit-review">
+          <Link>
           <button className="btn-sm bg-info font-semibold">Edit Review
           </button>
           </Link>
-        
           <button onClick={() => handleReviewDelete(review._id)} className="btn-sm bg-Red font-semibold">Delete Review</button>
         </div>
 
+{/* The button to open modal */}
+<label htmlFor="editReview" className="btn">Edit Review</label>
+
+{/* Modal Body */}
+<input type="checkbox" id="editReview" className="modal-toggle" />
+<div className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box">
+
+  <form onSubmit={(event) => handleReviewUpdate(event, review._id)} className=''>
+             
+              <div className="flex flex-col justify-center items-center">
+                <textarea name="reviewText" defaultValue={review?.reviewText} 
+                  className="textarea textarea-bordered focus:textarea-accent h-24 w-full text-center"
+                  placeholder="Please Write Your Review" required
+                ></textarea>
+    
+                <input
+                  type="submit"
+                  value="Submit Review"
+                  className="btn bg-success my-8 border-none md:w-3/5"
+                />
+              </div>
+            </form>
+    <div className="modal-action">
+      <label htmlFor="editReview" className="btn bg-Red border-none">Close</label>
+    </div>
+  </div>
+</div>
 
 
 
