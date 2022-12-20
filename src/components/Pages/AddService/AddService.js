@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { ClockLoader } from 'react-spinners';
+import RotateLoader from 'react-spinners/RotateLoader';
 import useTitle from '../../../Hooks/useTitle';
 
 const AddService = () => {
@@ -61,7 +62,7 @@ const handleAddService = event => {
         <div>
           {
             loading && <div className='flex justify-center items-center'>
-              <ClockLoader color='blue'/>
+              <RotateLoader color='blue'/>
             </div>
           }
 
@@ -82,29 +83,29 @@ const handleAddService = event => {
             <input 
               type="text" name="title"
               placeholder="Enter Service Title"
-              className="input input-success focus:input-accent md:w-3/5" required
+              className="input input-success focus:input-accent md:w-3/5 w-5/6" required
             />
             <input
               type="number" name="price"
               placeholder="Enter Service Price $"
-              className="input input-success focus:input-accent md:w-3/5" required
+              className="input input-success focus:input-accent md:w-3/5 w-5/6" required
             />
             <input
               type="text" name="serviceImg"
               placeholder="Enter Service PhotoURL"
-              className="input input-success focus:input-accent md:w-3/5" required
+              className="input input-success focus:input-accent md:w-3/5 w-5/6" required
             />
 
           </div>
 
           <div className="flex flex-col justify-center items-center">
             <textarea name="description"
-              className="textarea textarea-bordered focus:textarea-accent h-24 w-3/5 text-center"
+              className="textarea textarea-success focus:textarea-accent h-24 w-5/6 md:w-3/5 text-center"
               placeholder="Add Service Description" required
             ></textarea>
 
             <button  type="submit"
-              className="btn bg-purple-600 my-8 border-none md:w-3/5"> 
+              className="btn bg-dark-500 hover:bg-zinc-600 my-8 border-none md:w-3/5 w-5/6"> 
               Add Service
               </button>
              
