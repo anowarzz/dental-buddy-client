@@ -1,12 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { ClockLoader } from 'react-spinners';
 import useTitle from '../../../Hooks/useTitle';
 
 const AddService = () => {
 useTitle('Add Service')
 
+const [loading, setLoading] = useState(false)
+
 
 const handleAddService = event => {
+  setLoading(true)
   event.preventDefault();
   const form = event.target;
   const title = form.title.value;
@@ -33,11 +38,15 @@ const handleAddService = event => {
   .then(data => {
     console.log(data);
     if(data.acknowledged){
+      setLoading(false)
       toast.success('Service Added Successfully')
       form.reset();
     } 
   })
-  .catch(err => console.error(err))
+  .catch(err => {
+    console.error(err)
+    setLoading(false)
+  })
 
 }
 
@@ -50,6 +59,12 @@ const handleAddService = event => {
 
     return (
         <div>
+          {
+            loading && <div className='flex justify-center items-center'>
+              <ClockLoader color='blue'/>
+            </div>
+          }
+
       <div>
           <h2 className="text-2xl md:text-4xl font-semibold text-center pt-10">
             <span className="">
@@ -67,17 +82,17 @@ const handleAddService = event => {
             <input 
               type="text" name="title"
               placeholder="Enter Service Title"
-              className="input input-bordered focus:input-accent md:w-3/5" required
+              className="input input-success focus:input-accent md:w-3/5" required
             />
             <input
               type="number" name="price"
               placeholder="Enter Service Price $"
-              className="input input-bordered focus:input-accent md:w-3/5" required
+              className="input input-success focus:input-accent md:w-3/5" required
             />
             <input
               type="text" name="serviceImg"
               placeholder="Enter Service PhotoURL"
-              className="input input-bordered focus:input-accent md:w-3/5" required
+              className="input input-success focus:input-accent md:w-3/5" required
             />
 
           </div>
