@@ -53,11 +53,6 @@ const handleAddService = event => {
 
 
 
-
-
-
-
-
     return (
         <div>
           {
