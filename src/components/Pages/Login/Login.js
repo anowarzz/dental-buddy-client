@@ -14,7 +14,7 @@ const googleProvider = new GoogleAuthProvider();
 const Login = () => {
   useTitle("Login");
 
-  // Contest
+  // Context
   const { setUser, logIn, googleLogIn, loading, setLoading } =
     useContext(AuthContext);
 
@@ -114,7 +114,14 @@ const Login = () => {
         </div>
       )}
       <div className="mx-auto hero-content grid md:grid-cols-2 flex-col lg:flex-row items-center justify-center">
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:text-left ">
+      <div>
+        <p className="text-center text-blue-500 text-lg font-bold"> Easy Login</p>
+        <p className="text-center text-lg"> <span className="text-blue-600">Email :</span> john@doe.com</p>
+        <p className="text-center text-gray-700 text-lg"><span className="text-blue-600">Password: </span> John@1</p>
+      </div>
+
+
           <Lottie animationData={login} loop={true} />
         </div>
         <div className="card py-10  rounded border border-gray-200 shadow-md lg:w-3/4">

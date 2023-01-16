@@ -23,6 +23,7 @@ useTitle('Register')
     loading,
     setLoading,
   } = useContext(AuthContext);
+
   const [error, setError] = useState("");
 
   // location
@@ -30,6 +31,7 @@ useTitle('Register')
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  
   const handleCreateUser = (event) => {
     event.preventDefault();
     setLoading(true);

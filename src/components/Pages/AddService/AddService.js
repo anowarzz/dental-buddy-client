@@ -15,6 +15,23 @@ const handleAddService = event => {
   setLoading(true)
   event.preventDefault();
   const form = event.target;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   const title = form.title.value;
   const img = form.serviceImg.value;
   const price = form.price.value;
